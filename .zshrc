@@ -16,7 +16,7 @@ export NODE_PATH='/usr/local/lib/node_modules'
 
 export ANDROID_SDK_ROOT="/Users/lewismorgan/Library/Android/sdk"
 
-export RIOT_API_KEY="RGAPI-f81e6911-dd00-4617-88ff-c33867907e0d"
+export EDITOR="\"/Applications/Visual Studio Code.app/Contents/MacOS/Electron\" -nw"
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/lewismorgan/.oh-my-zsh
@@ -78,10 +78,6 @@ gpip3() {
 export HOMEBREW_GITHUB_API_TOKEN="ad0b41aa3a82c2dbfd5155d306e32cee1cfe95c1"
 
 alias ksc="kaitai-struct-compiler"
-
-# export MANPATH="/usr/local/man:$MANPATH"
-# Set Atom as default editor
-export EDITOR="/Applications/Atom.app/Contents/MacOS/Atom -nw"
 
 # NodeEnv init
 eval "$(nodenv init -)"
