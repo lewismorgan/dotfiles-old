@@ -1,0 +1,3 @@
+#!/bin/zsh
+ln -s ~/console/.zshrc ~/.zshrc
+ln -s ~/console/.zshrc.powerlevel ~/.zshrc.powerlevel
