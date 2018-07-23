@@ -75,8 +75,8 @@ gpip3() {
 }
 
 #Homebrew
-export HOMEBREW_GITHUB_API_TOKEN="ad0b41aa3a82c2dbfd5155d306e32cee1cfe95c1"
-
+#export HOMEBREW_GITHUB_API_TOKEN="ad0b41aa3a82c2dbfd5155d306e32cee1cfe95c1"
+alias xcode="open -a Xcode"
 alias ksc="kaitai-struct-compiler"
 
 # NodeEnv init
