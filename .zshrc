@@ -23,8 +23,7 @@ export ZSH=/Users/lewismorgan/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="bullet-train" -- OLD Theme I was using!
-DEFAULT_USER="lewismorgan" # don't add @ part
+DEFAULT_USER="lewismorgan" # Removes the annoying @ breaking the theme
 ZSH_THEME="powerlevel9k/powerlevel9k"
 export LANG=en_US.UTF-8
 # Source powerlevel9k customizations.
@@ -74,8 +73,6 @@ gpip3() {
   PIP_REQUIRE_VIRTUALENV="" pip3 "$@"
 }
 
-#Homebrew
-#export HOMEBREW_GITHUB_API_TOKEN="ad0b41aa3a82c2dbfd5155d306e32cee1cfe95c1"
 alias xcode="open -a Xcode"
 alias ksc="kaitai-struct-compiler"
 alias kraken="open -a 'GitKraken' --args -p $(pwd)"
