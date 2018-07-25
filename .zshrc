@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$HOME/.dotfiles/bin:$PATH
 
 # Set JAVA_HOME path
 #export JAVA_HOME="$HOME/.jenv/versions/`jenv version-name`"
@@ -16,7 +16,7 @@ export NODE_PATH='/usr/local/lib/node_modules'
 
 export ANDROID_SDK_ROOT="/Users/lewismorgan/Library/Android/sdk"
 
-export EDITOR="\"/Applications/Visual Studio Code.app/Contents/MacOS/Electron\" -nw"
+# export EDITOR="/Applications/Visual Studio Code.app/Contents/MacOS/Electron"
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/lewismorgan/.oh-my-zsh
@@ -28,7 +28,7 @@ DEFAULT_USER="lewismorgan" # don't add @ part
 ZSH_THEME="powerlevel9k/powerlevel9k"
 export LANG=en_US.UTF-8
 # Source powerlevel9k customizations.
-[[ -f ~/.zshrc.powerlevel ]] && source ~/.zshrc.powerlevel
+[[ -f ~/.zsh/forcelevel ]] && source ~/.zsh/forcelevel
 
 # Uncomment the following line to change how often to auto-update (in days).
 export UPDATE_ZSH_DAYS=3
@@ -78,6 +78,7 @@ gpip3() {
 #export HOMEBREW_GITHUB_API_TOKEN="ad0b41aa3a82c2dbfd5155d306e32cee1cfe95c1"
 alias xcode="open -a Xcode"
 alias ksc="kaitai-struct-compiler"
+alias kraken="open -a 'GitKraken' --args -p $(pwd)"
 
 # NodeEnv init
 eval "$(nodenv init -)"
