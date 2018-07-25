@@ -1,0 +1,2 @@
+PATH=/usr/local/bin:/usr/bin:/bin
+0	12, 20	*	*	0	/Users/lewismorgan/.cron/daily.sh
