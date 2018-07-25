@@ -25,12 +25,10 @@ export ZSH=/Users/lewismorgan/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 DEFAULT_USER="lewismorgan" # Removes the annoying @ breaking the theme
 ZSH_THEME="powerlevel9k/powerlevel9k"
-export LANG=en_US.UTF-8
+#export LANG=en_US.UTF-8
+
 # Source powerlevel9k customizations.
 [[ -f ~/.zsh/forcelevel ]] && source ~/.zsh/forcelevel
-
-# Uncomment the following line to change how often to auto-update (in days).
-export UPDATE_ZSH_DAYS=3
 
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
@@ -58,9 +56,7 @@ ENABLE_CORRECTION="true"
 plugins=(iterm2 git vscode npm gulp)
 source $ZSH/oh-my-zsh.sh
 
-
 # User configuration
-
 BULLETTRAIN_JAVA_PREFIX="☕ "
 BULLETTRAIN_JAVA_BG=white
 BULLETTRAIN_JAVA_FG=black
