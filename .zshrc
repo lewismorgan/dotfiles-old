@@ -25,7 +25,7 @@ export ZSH=/Users/lewismorgan/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 DEFAULT_USER="lewismorgan" # Removes the annoying @ breaking the theme
 ZSH_THEME="powerlevel9k/powerlevel9k"
-export LANG=en_US.UTF-8
+#export LANG=en_US.UTF-8
 # Source powerlevel9k customizations.
 [[ -f ~/.zsh/forcelevel ]] && source ~/.zsh/forcelevel
 
