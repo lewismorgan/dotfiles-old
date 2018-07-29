@@ -1,0 +1,9 @@
+[user]
+	name = Lewis
+	email = 1057112+lewismorgan@users.noreply.github.com
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
+[core]
+	autocrlf = input
+	editor = vim
