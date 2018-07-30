@@ -1,16 +1,35 @@
 #!/bin/bash
 PATH=/usr/local/bin:${PATH}
 
+##
+# Determine if the network is up by looking for any non-loopback
+# internet network interfaces.
+##
+CheckForNetwork()
+{
+	local test
+
+	if [ -z "${NETWORKUP:=}" ]; then
+		test=$(ifconfig -a inet 2>/dev/null | sed -n -e '/127.0.0.1/d' -e '/0.0.0.0/d' -e '/inet/p' | wc -l)
+		if [ "${test}" -gt 0 ]; then
+			NETWORKUP="-YES-"
+		else
+			NETWORKUP="-NO-"
+		fi
+	fi
+}
+
+CheckForNetwork
+
 while [ "${NETWORKUP}" != "-YES-" ]
 do
   sleep 300
-  case "$(curl -s --max-time 2 -I http://google.com | sed 's/^[^ ]*  *\([0-9]\).*/\1/; 1q')" in
-    [23]) NETWORKUP="-YES-";;
-    5) NETWORKUP="-NO-";;
-    *) NETWORKUP="-MAYBE-";;
-  esac
+  NETWORKUP=
+  CheckForNetwork
+  echo "${NETWORKUP}"
 done
 
+echo "Connected to network. Updating Homebrew."
 # Update Homebrew
 brew update
 brew upgrade
