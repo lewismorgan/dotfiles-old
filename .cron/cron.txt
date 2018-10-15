@@ -1,0 +1,3 @@
+PATH=/usr/local/bin:/usr/bin:/bin
+@daily	/Users/lewismorgan/.cron/daily.sh
+@weekly	/Users/lewismorgan/.cron/weekly.sh
