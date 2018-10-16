@@ -5,7 +5,7 @@
 	<key>Label</key>
 	<string>com.lewisjmorgan.daily</string>
 	<key>Program</key>
-	<string>./.launchd/daily.sh</string>
+	<string>/Users/lewismorgan/.launchd/daily.sh</string>
 	<key>StartCalendarInterval</key>
 	<dict>
 		<key>Hour</key>
@@ -16,8 +16,8 @@
 	<key>RunAtLoad</key>
 	<true/>
 	<key>StandardErrorPath</key>
-	<string>./.launchd/daily.err</string>
+	<string>/Users/lewismorgan/.launchd/daily.err</string>
 	<key>StandardOutPath</key>
-	<string>./.launchd/daily.out</string>
+	<string>/Users/lewismorgan/.launchd/daily.out</string>
 </dict>
 </plist>
