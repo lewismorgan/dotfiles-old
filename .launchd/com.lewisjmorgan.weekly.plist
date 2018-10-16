@@ -5,7 +5,7 @@
   <key>Label</key>
   <string>com.lewisjmorgan.weekly</string>
   <key>Program</key>
-  <string>/Users/lewismorgan/.cron/weekly.sh</string>
+  <string>./.launchd/weekly.sh</string>
 
   <key>StartCalendarInterval</key>
   <dict>
@@ -21,8 +21,8 @@
   <true/>
 
   <key>StandardErrorPath</key>
-  <string>/Users/lewismorgan/launchd-weekly.err</string>
+  <string>./.launchd/weekly.err</string>
   <key>StandardOutPath</key>
-  <string>/Users/lewismorgan/launchd-weekly.out</string>
+  <string>./.launchd/weekly.out</string>
 </dict>
 </plist>

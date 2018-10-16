@@ -26,10 +26,10 @@ do
   sleep 300
   NETWORKUP=
   CheckForNetwork
-  echo "${NETWORKUP}"
 done
 
-echo "Connected to network. Updating Homebrew."
+DATE=$(date +%d-%m-%Y" "%H:%M:%S )
+echo "🕥 $DATE | Performing daily Homebrew update 🍺."
 # Update Homebrew
 brew update
 brew upgrade

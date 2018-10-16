@@ -2,25 +2,22 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-  <key>Label</key>
-  <string>com.lewisjmorgan.daily</string>
-  <key>Program</key>
-  <string>/Users/lewismorgan/.cron/daily.sh</string>
-
-  <key>StartCalendarInterval</key>
-  <dict>
-    <key>Hour</key>
-    <integer>08</integer>
-    <key>Minute</key>
-    <integer>0</integer>
-  </dict>
-
-  <key>RunAtLoad</key>
-  <true/>
-
-  <key>StandardErrorPath</key>
-  <string>/Users/lewismorgan/launchd-daily.err</string>
-  <key>StandardOutPath</key>
-  <string>/Users/lewismorgan/launchd-daily.out</string>
+	<key>Label</key>
+	<string>com.lewisjmorgan.daily</string>
+	<key>Program</key>
+	<string>./.launchd/daily.sh</string>
+	<key>StartCalendarInterval</key>
+	<dict>
+		<key>Hour</key>
+		<integer>8</integer>
+		<key>Minute</key>
+		<integer>0</integer>
+	</dict>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>StandardErrorPath</key>
+	<string>./.launchd/daily.err</string>
+	<key>StandardOutPath</key>
+	<string>./.launchd/daily.out</string>
 </dict>
 </plist>
