@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# TODO: Setup jenv's JRE
+
 # Bootstrap for 'Yet Another Dotfiles Manager' to setup my environment.
 # Created by Lewis Morgan
 
@@ -62,6 +64,12 @@ fi
 
 # Show hidden files on the system in finder (requires a restart once written. Cmd + Shift + . to display hidden files in open dialogs)
 defaults write com.apple.finder AppleShowAllFiles YES
+
+# Create jenv for Java 11 and Java 1.8
+jenv add /Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home
+jenv add /Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home
+# Use Java 11 as the global (default is set at system, explicilty define the one we wanna use though as java 11)
+jenv global 11
 
 # Create symlinks for vscode settings if installed
 if [ -d "$HOME/Library/Application\ Support/Code" ]; then
