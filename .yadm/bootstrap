@@ -1,12 +1,42 @@
 #!bin/bash
 
+# Bootstrap for 'Yet Another Dotfiles Manager' to setup my environment.
+# Created by Lewis Morgan
+
+# Ragequit if iTerm isn't installed because it really should be installed.
+if [ $TERM_PROGRAM != "iTerm.app" ]; then
+  echo "For the best experience, iTerm must be installed. Run 'yadm bootstrap' after installing iTerm."
+  exit -1
+fi
+
 # install homebrew if it's missing
 if ! command -v brew >/dev/null 2>&1; then
-  echo "Installing homebrew"
+  echo "Installing homebrew 🍺"
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
+# Now use the brewfile if it exists (which it should!)
 if [ -f "$HOME/.Brewfile" ]; then
-  echo "Updating homebrew bundle"
+  echo "Updating homebrew bundle 🍻"
   brew bundle --global
 fi
+
+# Install oh-my-zsh and powerlevel9k
+if [ ! -f "$HOME/.oh-my-zsh"]; then
+  echo "Installing oh-my-zsh 💻"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+  if [ ! -f "$HOME/.oh-my-zsh/custom/themes/powerlevel9k"]; then
+    echo "Setting up PowerLevel9K ⏫ for oh-my-zsh"
+    git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+  fi
+fi
+
+# Create symlinks for vscode settings if installed
+if [ -f "$HOME/Library/Application\ Support/Code" ] then
+  ln -s $HOME/.vscode/settings/settings.json $HOME/Library/Application\ Support/Code/User/settings.json
+  # Only have a settings file right now, no custom keybinds or snippets as of yet.
+  #ln -s $HOME/.VSCode/keybindings.json /Users/pawelgrzybek/Library/Application\ Support/Code/User/keybindings.json
+  #ln -s $HOME/.VSCode/snippets/ /Users/pawelgrzybek/Library/Application\ Support/Code/User/snippets
+fi
+
