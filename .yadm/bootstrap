@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 
 # Bootstrap for 'Yet Another Dotfiles Manager' to setup my environment.
 # Created by Lewis Morgan
