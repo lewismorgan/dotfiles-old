@@ -1,52 +1,18 @@
 #!/bin/bash
 
-# TODO: Manual Install for oh-my-zsh so it doesn't stop the bootstrap
-# TODO: Fix program arguments for launchd files
-# TODO: bazel requires java 1.8, install 1.8 cask right after regular java in brew file
-# TODO: curl https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/SpaceGray.itermcolorstheme for iterm color import
-# TODO: defaults write com.apple.finder AppleShowAllFiles YES
-# TODO: mkdir $HOME/bin
-# TODO: sudo ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport $HOME/bin/airport
-
 # Bootstrap for 'Yet Another Dotfiles Manager' to setup my environment.
 # Created by Lewis Morgan
-
-# Ragequit if iTerm isn't installed because it really should be installed.
-if [ $TERM_PROGRAM != "iTerm.app" ]; then
-  echo "For the best experience, iTerm must be installed. Run 'yadm bootstrap' after installing iTerm."
-  exit -1
-fi
 
 # install homebrew if it's missing
 if ! command -v brew >/dev/null 2>&1; then
   echo "Installing homebrew 🍺"
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-fi
 
-# Now use the brewfile if it exists (which it should!)
-if [ -f "$HOME/.Brewfile" ]; then
-  echo "Updating homebrew bundle 🍻"
-  brew bundle --global
-fi
-
-# Install oh-my-zsh and powerlevel9k
-if [ ! -d "$HOME/.oh-my-zsh" ]; then
-  echo "Installing oh-my-zsh 💻"
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-fi
-
-if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel9k" ]; then
-  echo "Setting up PowerLevel9K ⏫ for oh-my-zsh"
-  git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
-fi
-
-# Create symlinks for vscode settings if installed
-if [ -d "$HOME/Library/Application\ Support/Code" ]; then
-  echo "Symlinking vscode settings ⚙️"
-  ln -s $HOME/.vscode/settings/settings.json $HOME/Library/Application\ Support/Code/User/settings.json
-  # Only have a settings file right now, no custom keybinds or snippets as of yet.
-  #ln -s $HOME/.VSCode/keybindings.json /Users/pawelgrzybek/Library/Application\ Support/Code/User/keybindings.json
-  #ln -s $HOME/.VSCode/snippets/ /Users/pawelgrzybek/Library/Application\ Support/Code/User/snippets
+  # Now use the brewfile if it exists
+  if [ -f "$HOME/.Brewfile" ]; then
+    echo "Installing from the brewfile 🍻"
+    brew bundle --global
+  fi
 fi
 
 # Set up the launchd jobs
@@ -63,3 +29,49 @@ if [ -d "$HOME/.launchd" ]; then
   launchctl load $HOME/Library/LaunchAgents/com.lewisjmorgan.daily.plist
   launchctl load $HOME/Library/LaunchAgents/com.lewisjmorgan.weekly.plist
 fi
+
+# iTerm2 Setup
+if [ ! -f "$HOME/.iterm2/Broadcast.itermcolorstheme" ]; then
+  echo "Downloading iTerm2 Broadcast theme 🖥"
+
+  curl https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Broadcast.itermcolorstheme -o $HOME/.iterm/Broadcast.itermcolorstheme 
+fi
+
+# Install oh-my-zsh
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+  echo "Installing oh-my-zsh 💻"
+  git clone https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
+fi
+
+# Install powerlevel9k
+if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel9k" ]; then
+  echo "Setting up PowerLevel9K ⏫ for oh-my-zsh"
+  git clone https://github.com/bhilburn/powerlevel9k.git $HOME/.oh-my-zsh/custom/themes/powerlevel9k
+fi
+
+# Create a bin folder for user scripts
+if [ ! -d "$HOME/bin"]; then
+  mkdir $HOME/bin
+fi
+
+# Handy utility for getting network status. Airport utility is not located within the system path, so just create a symlink.
+if [ ! -f "$HOME/bin/airport"]; then
+  echo "Creating airport symlink in bin folder ✈️"
+  sudo ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport $HOME/bin/airport
+fi
+
+# Show hidden files on the system in finder (requires a restart once written. Cmd + Shift + . to display hidden files in open dialogs)
+defaults write com.apple.finder AppleShowAllFiles YES
+
+# Create symlinks for vscode settings if installed
+if [ -d "$HOME/Library/Application\ Support/Code" ]; then
+  echo "Symlinking vscode settings ⚙️"
+  ln -s $HOME/.vscode/settings/settings.json $HOME/Library/Application\ Support/Code/User/settings.json
+  # Only have a settings file right now, no custom keybinds or snippets as of yet.
+  #ln -s $HOME/.VSCode/keybindings.json /Users/pawelgrzybek/Library/Application\ Support/Code/User/keybindings.json
+  #ln -s $HOME/.VSCode/snippets/ /Users/pawelgrzybek/Library/Application\ Support/Code/User/snippets
+fi
+
+echo "Finished bootstrapping! Changing shell to ZSH. 👍"
+# Change the shell to ZSH --- Keep this as the last line.
+chsh -s /bin/zsh
