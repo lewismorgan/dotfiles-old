@@ -33,10 +33,20 @@ if [ ! -f "$HOME/.oh-my-zsh"]; then
 fi
 
 # Create symlinks for vscode settings if installed
-if [ -f "$HOME/Library/Application\ Support/Code" ] then
+if [ -f "$HOME/Library/Application\ Support/Code" ]; then
+  echo "Symlinking vscode settings ⚙️"
   ln -s $HOME/.vscode/settings/settings.json $HOME/Library/Application\ Support/Code/User/settings.json
   # Only have a settings file right now, no custom keybinds or snippets as of yet.
   #ln -s $HOME/.VSCode/keybindings.json /Users/pawelgrzybek/Library/Application\ Support/Code/User/keybindings.json
   #ln -s $HOME/.VSCode/snippets/ /Users/pawelgrzybek/Library/Application\ Support/Code/User/snippets
 fi
 
+# Set up the launchd jobs
+if [ -f "$HOME/.launchd" ]; then
+  echo "Symlinking launch agent definitions 📁"
+  ln -s $HOME/.launchd/com.lewisjmorgan.daily.plist $HOME/Library/LaunchAgents/com.lewisjmorgan.daily.plist
+  ln -s $HOME/.launchd/com.lewisjmorgan.weekly.plist $HOME/Library/LaunchAgents/com.lewisjmorgan.weekly.plist
+  echo "Hooking launch agents up to launchctl 🚀"
+  launchctl load $HOME/Library/LaunchAgents/com.lewisjmorgan.daily.plist
+  launchctl load $HOME/Library/LaunchAgents/com.lewisjmorgan.weekly.plist
+fi
