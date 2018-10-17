@@ -45,7 +45,11 @@ zsh_internet_signal(){
   #source on signal levels  - http://www.speedguide.net/faq/how-to-read-rssisignal-and-snrnoise-ratings-440
 	local signal=$(airport -I | grep agrCtlRSSI | awk '{print $2}' | sed 's/-//g')
   local noise=$(airport -I | grep agrCtlNoise | awk '{print $2}' | sed 's/-//g')
-  local SNR=$(bc <<<"scale=2; $signal / $noise")
+  local SNR=0
+
+  if [ ! $noise -eq 0 ]; then
+    SNR=$(bc <<<"scale=2; $signal / $noise")
+  fi
 
   local net=$(curl -D- -o /dev/null -s http://www.google.com | grep HTTP/1.1 | awk '{print $2}')
   local color='%F{yellow}'
