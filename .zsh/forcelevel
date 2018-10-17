@@ -12,7 +12,7 @@ prompt_npmnode() {
       return
     fi
     node_prompt=${node_prompt}
-    echo -n "%{$color%}\ue71e $node_prompt"
+    echo -n " %{$color%}\ue71e $node_prompt"
   fi
 }
 
@@ -21,7 +21,7 @@ prompt_jenv() {
   if [ -f ./.java-version ] || [ -f ../.java-version ] || [ -f ../../.java-version ]; then
     if command -v java > /dev/null 2>&1; then
       local jversion=$(java -version 2>&1 | head -n 1 | awk -F '"' '{print $2}')
-      echo -n "%{$color%}\uf0f4 $jversion "
+      echo -n " %{$color%}\uf0f4 $jversion"
     fi
   fi
 }
@@ -34,7 +34,7 @@ prompt_spotify() {
       artist=`osascript -e 'tell application "Spotify" to artist of current track as string'`;
       track=`osascript -e 'tell application "Spotify" to name of current track as string'`;
 
-        echo -n "%{$color%}\uf1bc  $artist - $track " ;
+      echo -n " %{$color%}\uf1bc ${track:0:15} - ${artist:0:5}"
 
     fi
   fi
