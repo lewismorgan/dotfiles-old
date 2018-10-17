@@ -1,9 +1,28 @@
 #!/bin/bash
 
-# TODO: Setup jenv's JRE
-
 # Bootstrap for 'Yet Another Dotfiles Manager' to setup my environment.
 # Created by Lewis Morgan
+
+# Global npm modules to install
+npmModules() {
+  # Gulp
+  npm install gulp-cli -g
+}
+
+# Java Environments to setup
+setupJenv() {
+  # Create jenv for Java 11 and Java 1.8
+  jenv add /Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home
+  jenv add /Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home
+  jenv rehash
+  # Use Java 11 as the global (default is set at system, explicilty define the one we wanna use though as java 11)
+  jenv global 11
+}
+
+# Create a bin folder for user scripts
+if [ ! -d "$HOME/bin"]; then
+  mkdir $HOME/bin
+fi
 
 # install homebrew if it's missing
 if ! command -v brew >/dev/null 2>&1; then
@@ -51,11 +70,6 @@ if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel9k" ]; then
   git clone https://github.com/bhilburn/powerlevel9k.git $HOME/.oh-my-zsh/custom/themes/powerlevel9k
 fi
 
-# Create a bin folder for user scripts
-if [ ! -d "$HOME/bin"]; then
-  mkdir $HOME/bin
-fi
-
 # Handy utility for getting network status. Airport utility is not located within the system path, so just create a symlink.
 if [ ! -f "$HOME/bin/airport"]; then
   echo "Creating airport symlink in bin folder ✈️"
@@ -65,13 +79,6 @@ fi
 # Show hidden files on the system in finder (requires a restart once written. Cmd + Shift + . to display hidden files in open dialogs)
 defaults write com.apple.finder AppleShowAllFiles YES
 
-# Create jenv for Java 11 and Java 1.8
-jenv add /Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home
-jenv add /Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home
-jenv rehash
-# Use Java 11 as the global (default is set at system, explicilty define the one we wanna use though as java 11)
-jenv global 11
-
 # Create symlinks for vscode settings if installed
 if [ -d "$HOME/Library/Application\ Support/Code" ]; then
   echo "Symlinking vscode settings ⚙️"
@@ -80,6 +87,9 @@ if [ -d "$HOME/Library/Application\ Support/Code" ]; then
   #ln -s $HOME/.VSCode/keybindings.json /Users/pawelgrzybek/Library/Application\ Support/Code/User/keybindings.json
   #ln -s $HOME/.VSCode/snippets/ /Users/pawelgrzybek/Library/Application\ Support/Code/User/snippets
 fi
+
+npmModules()
+setupJenv()
 
 echo "Finished bootstrapping! Changing shell to ZSH. 👍"
 # Change the shell to ZSH --- Keep this as the last line.
