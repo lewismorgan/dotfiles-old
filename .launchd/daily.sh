@@ -29,7 +29,9 @@ do
 done
 
 DATE=$(date +%d-%m-%Y" "%H:%M:%S )
-echo "🕥 $DATE | Performing daily Homebrew update 🍺."
+echo "| 🕥 $DATE | Performing daily Homebrew update 🍺."
 # Update Homebrew
 brew update
 brew upgrade
+
+echo "||||| Finished running daily script ☑️ |||||"
