@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# This script will automatically add jenv for all installed Java Environments
+for d in /Library/Java/JavaVirtualMachines/*.jdk/Contents/Home; do
+  echo "Adding $d to jenv"
+  jenv add $d
+done
+
+jenv rehash
