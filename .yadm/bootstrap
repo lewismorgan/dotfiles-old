@@ -18,6 +18,24 @@ setupJenv() {
   jenv global 11.0
 }
 
+installCodeExtensions() {
+  echo "Installing code extensions"
+  code --install-extension bierner.emojisense
+  code --install-extension brunnerh.insert-unicode
+  code --install-extension dustinsanders.an-old-hope-theme-vscode
+  code --install-extension eamodio.gitlens
+  code --install-extension glen-84.sass-lint
+  code --install-extension Janne252.fontawesome-autocomplete
+  code --install-extension mathiasfrohlich.Kotlin
+  code --install-extension ritwickdey.live-sass
+  code --install-extension ritwickdey.LiveServer
+  code --install-extension robinbentley.sass-indented
+  code --install-extension rpinski.shebang-snippets
+  code --install-extension wayou.vscode-todo-highlight
+  code --install-extension zeithaste.cursorCharCode
+  code --install-extension zhouronghui.propertylist
+}
+
 writeDefaults() {
   echo "Writing defaults 🔖"
   # Show hidden files on the system in finder (requires a restart once written. Cmd + Shift + . to display hidden files in open dialogs)
@@ -96,6 +114,7 @@ fi
 if [ -d "$HOME/Library/Application\ Support/Code" ]; then
   echo "Symlinking vscode settings ⚙️"
   ln -s $HOME/.vscode/settings/settings.json $HOME/Library/Application\ Support/Code/User/settings.json
+  installCodeExtensions()
   # Only have a settings file right now, no custom keybinds or snippets as of yet.
   #ln -s $HOME/.VSCode/keybindings.json /Users/pawelgrzybek/Library/Application\ Support/Code/User/keybindings.json
   #ln -s $HOME/.VSCode/snippets/ /Users/pawelgrzybek/Library/Application\ Support/Code/User/snippets
