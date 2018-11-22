@@ -22,6 +22,13 @@ writeDefaults() {
   echo "Writing defaults 🔖"
   # Show hidden files on the system in finder (requires a restart once written. Cmd + Shift + . to display hidden files in open dialogs)
   defaults write com.apple.finder AppleShowAllFiles YES
+
+  # iTerm2
+
+  # Specify the preferences directory
+  defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/iterm2"
+  # Use the custom preferences in the directory
+  defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
 }
 
 # Create a bin folder for user scripts
