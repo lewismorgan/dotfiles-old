@@ -1,3 +1,4 @@
+
 # Functions
 prompt_npmnode() {
   local color='%F{white}'

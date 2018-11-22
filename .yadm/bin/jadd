@@ -1,9 +1,17 @@
 #!/usr/bin/env bash
 
+# Simple shell script to link jdk's in the JavaVirtualMachines directory 
+
+JAVA_INSTALL_LOC=/Library/Java/JavaVirtualMachines
+BLUE='\033[0;34m'
+
+echo -e "Adding JVM's to Jenv from $JAVA_INSTALL_LOC ${BLUE}\uf0f4"
+
 # This script will automatically add jenv for all installed Java Environments
-for d in /Library/Java/JavaVirtualMachines/*.jdk/Contents/Home; do
-  echo "Adding $d to jenv"
+for d in $JAVA_INSTALL_LOC/*.jdk/Contents/Home; do
+  echo "Linking $d to jenv"
   jenv add $d
 done
 
+# Rehash after adding
 jenv rehash

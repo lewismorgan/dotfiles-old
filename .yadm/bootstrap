@@ -1,28 +1,38 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Bootstrap for 'Yet Another Dotfiles Manager' to setup my environment.
 # Created by Lewis Morgan
 
 # Global npm modules to install
 npmModules() {
+  echo "Installing npm packages "
   # Gulp
   npm install gulp-cli -g
 }
 
 # Java Environments to setup
 setupJenv() {
-  # Create jenv for Java 11 and Java 1.8
-  jenv add /Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home
-  jenv add /Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home
-  jenv rehash
+  # Add all java environments using custom jadd script
+  jadd
   # Use Java 11 as the global (default is set at system, explicilty define the one we wanna use though as java 11)
-  jenv global 11
+  jenv global 11.0
+}
+
+writeDefaults() {
+  echo "Writing defaults 🔖"
+  # Show hidden files on the system in finder (requires a restart once written. Cmd + Shift + . to display hidden files in open dialogs)
+  defaults write com.apple.finder AppleShowAllFiles YES
 }
 
 # Create a bin folder for user scripts
 if [ ! -d "$HOME/bin"]; then
   mkdir $HOME/bin
 fi
+
+# Symlink all files in .yadm/bin to bin/*, these are custom scripts
+for file in $HOME/.yadm/bin/*; do
+  ln -s ${file} $HOME/bin/${file##*/}
+done
 
 # install homebrew if it's missing
 if ! command -v brew >/dev/null 2>&1; then
@@ -54,7 +64,6 @@ fi
 # iTerm2 Setup
 if [ ! -f "$HOME/.iterm2/Broadcast.itermcolorstheme" ]; then
   echo "Downloading iTerm2 Broadcast theme 🖥"
-
   curl https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Broadcast.itermcolorstheme -o $HOME/.iterm/Broadcast.itermcolorstheme 
 fi
 
@@ -76,9 +85,6 @@ if [ ! -f "$HOME/bin/airport"]; then
   sudo ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport $HOME/bin/airport
 fi
 
-# Show hidden files on the system in finder (requires a restart once written. Cmd + Shift + . to display hidden files in open dialogs)
-defaults write com.apple.finder AppleShowAllFiles YES
-
 # Create symlinks for vscode settings if installed
 if [ -d "$HOME/Library/Application\ Support/Code" ]; then
   echo "Symlinking vscode settings ⚙️"
@@ -88,9 +94,11 @@ if [ -d "$HOME/Library/Application\ Support/Code" ]; then
   #ln -s $HOME/.VSCode/snippets/ /Users/pawelgrzybek/Library/Application\ Support/Code/User/snippets
 fi
 
+# Misc setup
 npmModules()
 setupJenv()
+writeDefaults()
 
-echo "Finished bootstrapping! Changing shell to ZSH. 👍"
-# Change the shell to ZSH --- Keep this as the last line.
+echo "Finished setting up the environment! Changing shell to ZSH. 👍"
+# Change the shell to ZSH --- Keep this as the last line otherwise nothing will run after.
 chsh -s /bin/zsh
