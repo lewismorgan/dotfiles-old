@@ -1,1 +1,4 @@
 # .gitignore for dotfiles managed by YADM
+build
+*.out
+*.err
