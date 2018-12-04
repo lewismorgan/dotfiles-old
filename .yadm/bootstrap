@@ -4,10 +4,11 @@
 # Created by Lewis Morgan
 
 # Global npm modules to install
-npmModules() {
-  echo "Installing npm packages "
+yarnModules() {
+  echo "Installing global yarn packages 🧶"
   # Gulp
-  npm install gulp-cli -g
+  yarn global add gulp-cli
+  yarn global add create-react-kotlin-app
 }
 
 # Java Environments to setup
@@ -121,7 +122,7 @@ if [ -d "$HOME/Library/Application\ Support/Code" ]; then
 fi
 
 # Misc setup
-npmModules()
+yarnModules()
 setupJenv()
 writeDefaults()
 

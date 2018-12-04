@@ -478,17 +478,19 @@
 	<string>769 110 445 247 0 0 1280 777 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>330 288 620 392 0 0 1280 777 </string>
+	<key>NSWindow Frame SessionsPreferences</key>
+	<string>269 94 599 501 0 0 1280 777 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>203 255 796 486 0 0 1280 777 </string>
+	<string>203 235 918 452 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>125 67 1050 507 0 0 1280 777 </string>
+	<string>34 118 1210 587 0 0 1280 777 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
 			<key>ASCII Anti Aliased</key>
 			<true/>
 			<key>ASCII Ligatures</key>
-			<false/>
+			<true/>
 			<key>Ambiguous Double Width</key>
 			<false/>
 			<key>Ansi 0 Color</key>
@@ -679,7 +681,7 @@
 			<key>Close Sessions On End</key>
 			<true/>
 			<key>Columns</key>
-			<integer>130</integer>
+			<integer>150</integer>
 			<key>Command</key>
 			<string></string>
 			<key>Cursor Color</key>
@@ -716,7 +718,7 @@
 			<key>Custom Command</key>
 			<string>No</string>
 			<key>Custom Directory</key>
-			<string>No</string>
+			<string>Recycle</string>
 			<key>Default Bookmark</key>
 			<string>No</string>
 			<key>Description</key>
@@ -1060,7 +1062,7 @@
 			<key>Right Option Key Sends</key>
 			<integer>0</integer>
 			<key>Rows</key>
-			<integer>30</integer>
+			<integer>60</integer>
 			<key>Screen</key>
 			<integer>-1</integer>
 			<key>Scrollback Lines</key>
@@ -1126,7 +1128,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>1D609BF4-8318-41BE-B156-E56EC2BEC862</string>
 	<key>NoSyncLastTipTime</key>
-	<real>564694080.218696</real>
+	<real>565539710.72825801</real>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -1139,6 +1141,11 @@
 	<array>
 		<string>000</string>
 		<string>0000</string>
+		<string>0001</string>
+		<string>0002</string>
+		<string>0003</string>
+		<string>0004</string>
+		<string>0005</string>
 	</array>
 	<key>OnlyWhenMoreTabs</key>
 	<false/>
@@ -1196,7 +1203,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-11-23T19:29:03Z</date>
+	<date>2018-12-02T13:39:16Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -1208,6 +1215,6 @@
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
 	<key>iTerm Version</key>
-	<string>3.2.5</string>
+	<string>3.2.6</string>
 </dict>
 </plist>
