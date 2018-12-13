@@ -2,8 +2,7 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Set JAVA_HOME path
-#export JAVA_HOME="$HOME/.jenv/versions/`jenv version-name`"
-export GROOVY_HOME=/usr/local/opt/groovy/libexec
+#export GROOVY_HOME=/usr/local/opt/groovy/libexec
 
 # Python env paths
 export PATH="/usr/local/sbin:$PATH"
@@ -63,3 +62,6 @@ if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -
 
 # JEnv
 eval "$(jenv init -)"
+export JAVA_HOME="$HOME/.jenv/versions/`jenv version-name`"
+alias jenv_set_java_home='export JAVA_HOME="$HOME/.jenv/versions/`jenv version-name`"'
+

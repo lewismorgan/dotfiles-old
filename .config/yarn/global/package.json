@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "create-react-kotlin-app": "^1.0.11",
+    "serve": "^10.1.1"
+  }
+}
