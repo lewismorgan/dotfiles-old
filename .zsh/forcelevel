@@ -13,95 +13,74 @@ prompt_npmnode() {
       return
     fi
     node_prompt=${node_prompt}
-    echo -n " %{$color%}\ue71e $node_prompt"
+    echo "\ue71e $node_prompt"
   fi
 }
 
 prompt_jenv() {
-  local color='%F{white}'
   if [ -f ./.java-version ] || [ -f ../.java-version ] || [ -f ../../.java-version ]; then
     if command -v java > /dev/null 2>&1; then
-      local jversion=$(java -version 2>&1 | head -n 1 | awk -F '"' '{print $2}')
-      echo -n " %{$color%}\uf0f4 $jversion"
+      local jversion=$(java -version 2>&1 | grep -i version | cut -d'"' -f2 | cut -d'.' -f1-2)
+      echo "\uE256 $jversion"
     fi
   fi
 }
 
 prompt_spotify() {
   if pgrep -x "Spotify" > /dev/null 2>&1; then
-    local color='%F{white}'
     state=`osascript -e 'tell application "Spotify" to player state as string'`;
     if [ $state = "playing" ]; then
-      artist=`osascript -e 'tell application "Spotify" to artist of current track as string'`;
       track=`osascript -e 'tell application "Spotify" to name of current track as string'`;
 
-      echo -n " %{$color%}\uf1bc ${track:0:15} - ${artist:0:5}"
-
+      echo "\uf1bc ${track:0:10}"
     fi
   fi
 }
 
-zsh_internet_signal(){
-  #source on quality levels - http://www.wireless-nets.com/resources/tutorials/define_SNR_values.html
-  #source on signal levels  - http://www.speedguide.net/faq/how-to-read-rssisignal-and-snrnoise-ratings-440
-	local signal=$(airport -I | grep agrCtlRSSI | awk '{print $2}' | sed 's/-//g')
-  local noise=$(airport -I | grep agrCtlNoise | awk '{print $2}' | sed 's/-//g')
-  local SNR=0
+# Custom Segments
+POWERLEVEL9K_CUSTOM_SPOTIFY='prompt_spotify'
+POWERLEVEL9K_CUSTOM_SPOTIFY_BACKGROUND='green'
+POWERLEVEL9K_CUSTOM_SPOTIFY_FOREGROUND='black'
 
-  if [ ! $noise -eq 0 ]; then
-    SNR=$(bc <<<"scale=2; $signal / $noise")
-  fi
+POWERLEVEL9K_CUSTOM_JENV='prompt_jenv'
+POWERLEVEL9K_CUSTOM_JENV_BACKGROUND='white'
+POWERLEVEL9K_CUSTOM_JENV_FOREGROUND='black'
 
-  local net=$(curl -D- -o /dev/null -s http://www.google.com | grep HTTP/1.1 | awk '{print $2}')
-  local color='%F{yellow}'
-  local symbol="\uf197"
+POWERLEVEL9K_CUSTOM_NPM='prompt_npmnode'
+POWERLEVEL9K_CUSTOM_NPM_BACKGROUND='124'
+POWERLEVEL9K_CUSTOM_NPM_FOREGROUND='white'
 
-  # Excellent Signal (5 bars)
-  if [[ ! -z "${signal// }" ]] && [[ $SNR -gt .40 ]] ;
-    then color='%F{blue}' ; symbol="\uf1eb" ;
-  fi
+# vcs
+POWERLEVEL9K_SHOW_CHANGESET=true
+POWERLEVEL9K_CHANGESET_HASH_LENGTH=6
 
-  # Good Signal (3-4 bars)
-  if [[ ! -z "${signal// }" ]] && [[ ! $SNR -gt .40 ]] && [[ $SNR -gt .25 ]] ;
-    then color='%F{green}' ; symbol="\uf1eb" ;
-  fi
+POWERLEVEL9K_VCS_CLEAN_BACKGROUND='none'
+POWERLEVEL9K_VCS_CLEAN_FOREGROUND='076'
+POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='none'
+POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='005'
+POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='none'
+POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='003'
 
-  # Low Signal (2 bars)
-  if [[ ! -z "${signal// }" ]] && [[ ! $SNR -gt .25 ]] && [[ $SNR -gt .15 ]] ;
-    then color='%F{yellow}' ; symbol="\uf1eb" ;
-  fi
+POWERLEVEL9K_VCS_GIT_HOOKS=(vcs-detect-changes git-untracked git-aheadbehind git-remotebranch git-tagname)
 
-  # Very Low Signal (1 bar)
-  if [[ ! -z "${signal// }" ]] && [[ ! $SNR -gt .15 ]] && [[ $SNR -gt .10 ]] ;
-    then color='%F{red}' ; symbol="\uf1eb" ;
-  fi
-
-  # No Signal - No Internet
-  if [[ ! -z "${signal// }" ]] && [[ ! $SNR -gt .10 ]] ;
-    then color='%F{red}' ; symbol="\uf011";
-  fi
-
-  if [[ -z "${signal// }" ]] && [[ "$net" -ne 200 ]] ;
-    then color='%F{red}' ; symbol="\uf011" ;
-  fi
-
-  # Ethernet Connection (no wifi, hardline)
-  if [[ -z "${signal// }" ]] && [[ "$net" -eq 200 ]] ;
-    then color='%F{blue}' ; symbol="\uf197" ;
-  fi
-
-  echo -n "%{$color%}$symbol " # \f1eb is wifi bars
-}
+# Icons
 
 # Customizations
 
 POWERLEVEL9K_MODE='nerdfont-complete'
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_STATUS_OK_IN_NON_VERBOSE=true
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=''
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%K{white}%F{black} \uf43a `date +%T` %f%k%F{white}%f "
 
-POWERLEVEL9K_CUSTOM_INTERNET_SIGNAL="zsh_internet_signal"
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=('os_icon' 'custom_internet_signal' 'context' 'dir' 'vcs')
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=('status' 'rbenv' 'pyenv' 'npmnode' 'jenv' 'spotify' 'root_indicator' 'background_jobs')
-POWERLEVEL9K_VCS_GIT_GITHUB_ICON='\ue709'
+POWERLEVEL9K_STATUS_OK_BACKGROUND='black'
+
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%F{blue}╭"
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%F{blue}╰%F{159}\uF460\uF460\uF460%F{white} "
+
+# Left
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=('context' 'dir' 'rbenv' 'pyenv' 'custom_jenv' 'custom_npm' 'custom_spotify' 'background_jobs')
+POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR='\uE0B4'
+
+# Right
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=('vcs')
+POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=''
+POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR=' '
+POWERLEVEL9K_WHITESPACE_BETWEEN_RIGHT_SEGMENTS=''

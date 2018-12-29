@@ -90,7 +90,8 @@ fi
 # iTerm2 Setup
 if [ ! -f "$HOME/.iterm2/Broadcast.itermcolorstheme" ]; then
   echo "Downloading iTerm2 Broadcast theme 🖥"
-  curl https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Broadcast.itermcolorstheme -o $HOME/.iterm/Broadcast.itermcolorstheme 
+  curl https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Broadcast.itermcolorstheme -o $HOME/.iterm2/Broadcast.itermcolorstheme
+  curl https://raw.githubusercontent.com/chriskempson/tomorrow-theme/master/iTerm2/Tomorrow%20Night.itermcolors -o $HOME/.iterm2/TomorrowNight.itermcolors
 fi
 
 # Install oh-my-zsh
