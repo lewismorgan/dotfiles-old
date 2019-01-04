@@ -16,8 +16,8 @@
 	<key>RunAtLoad</key>
 	<true/>
 	<key>StandardErrorPath</key>
-	<string>/Users/lewismorgan/.launchd/daily.err</string>
+	<string>/Users/lewismorgan/daily.err</string>
 	<key>StandardOutPath</key>
-	<string>/Users/lewismorgan/.launchd/daily.out</string>
+	<string>/Users/lewismorgan/daily.out</string>
 </dict>
 </plist>

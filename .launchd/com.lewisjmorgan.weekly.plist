@@ -21,8 +21,8 @@
   <true/>
 
   <key>StandardErrorPath</key>
-  <string>/Users/lewismorgan/.launchd/weekly.err</string>
+  <string>/Users/lewismorgan/weekly.err</string>
   <key>StandardOutPath</key>
-  <string>/Users/lewismorgan/.launchd/weekly.out</string>
+  <string>/Users/lewismorgan/weekly.out</string>
 </dict>
 </plist>
