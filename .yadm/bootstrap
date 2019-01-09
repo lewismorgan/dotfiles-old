@@ -14,7 +14,7 @@ yarnModules() {
 # Java Environments to setup
 setupJenv() {
   # Add all java environments using custom jadd script
-  jadd
+  ~/.yadm/bin/jadd
   # Use Java 11 as the global (default is set at system, explicilty define the one we wanna use though as java 11)
   jenv global 11.0
 }
@@ -51,7 +51,7 @@ writeDefaults() {
 }
 
 # Create a bin folder for user scripts
-if [ ! -d "$HOME/bin"]; then
+if [ ! -d "$HOME/bin" ]; then
   mkdir $HOME/bin
 fi
 
@@ -88,11 +88,11 @@ if [ -d "$HOME/.launchd" ]; then
 fi
 
 # iTerm2 Setup
-if [ ! -f "$HOME/.iterm2/Broadcast.itermcolorstheme" ]; then
-  echo "Downloading iTerm2 themes 🖥"
-  curl https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Broadcast.itermcolorstheme -o $HOME/.iterm2/Broadcast.itermcolorstheme
-  curl https://raw.githubusercontent.com/chriskempson/tomorrow-theme/master/iTerm2/Tomorrow%20Night.itermcolors -o $HOME/.iterm2/TomorrowNight.itermcolors
-fi
+#if [ ! -f "$HOME/.iterm2/Broadcast.itermcolorstheme" ]; then
+  #echo "Downloading iTerm2 themes 🖥"
+  #curl https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Broadcast.itermcolorstheme -o $HOME/.iterm2/Broadcast.itermcolorstheme
+  #curl https://raw.githubusercontent.com/chriskempson/tomorrow-theme/master/iTerm2/Tomorrow%20Night.itermcolors -o $HOME/.iterm2/TomorrowNight.itermcolors
+#fi
 
 # Install oh-my-zsh
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
@@ -107,19 +107,15 @@ if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel9k" ]; then
 fi
 
 # Handy utility for getting network status. Airport utility is not located within the system path, so just create a symlink.
-if [ ! -f "$HOME/bin/airport" ]; then
-  echo "Creating airport symlink in bin folder ✈️"
-  sudo ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport $HOME/bin/airport
-fi
+#if [ ! -f "$HOME/bin/airport" ]; then
+#  echo "Creating airport symlink in bin folder ✈️"
+#  sudo ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport $HOME/bin/airport
+#fi
 
 # Create symlinks for vscode settings if installed
 if [ -d "$HOME/Library/Application\ Support/Code" ]; then
   echo "Symlinking vscode settings ⚙️"
-  ln -s $HOME/.vscode/settings/settings.json $HOME/Library/Application\ Support/Code/User/settings.json
-  installCodeExtensions()
-  # Only have a settings file right now, no custom keybinds or snippets as of yet.
-  #ln -s $HOME/.VSCode/keybindings.json /Users/pawelgrzybek/Library/Application\ Support/Code/User/keybindings.json
-  #ln -s $HOME/.VSCode/snippets/ /Users/pawelgrzybek/Library/Application\ Support/Code/User/snippets
+  ln -s "$HOME/.vscode/settings/settings.json" "$HOME/Library/Application\ Support/Code/User/settings.json"
 fi
 
 # Misc setup
