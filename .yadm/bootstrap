@@ -13,6 +13,7 @@ yarnModules() {
 
 # Java Environments to setup
 setupJenv() {
+  jenv enable-plugin export
   # Add all java environments using custom jadd script
   ~/.yadm/bin/jadd
   # Use Java 11 as the global (default is set at system, explicilty define the one we wanna use though as java 11)
