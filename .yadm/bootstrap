@@ -119,9 +119,9 @@ if [ -d "$HOME/Library/Application\ Support/Code" ]; then
 fi
 
 # Misc setup
-yarnModules()
-setupJenv()
-writeDefaults()
+yarnModules
+setupJenv
+writeDefaults
 
 echo "Finished setting up the environment! Changing shell to ZSH. 👍"
 # Change the shell to ZSH --- Keep this as the last line otherwise nothing will run after.
