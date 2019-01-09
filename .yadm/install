@@ -1,0 +1,13 @@
+# install homebrew if it's missing
+if ! command -v brew >/dev/null 2>&1; then
+  echo "Installing homebrew 🍺"
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
+# install yadm
+if ! command yadm >/dev/null 2>&1; then
+  echo "Installing yadm ⚙️"
+  brew install yadm
+fi
+
+yadm clone https://github.com/lewismorgan/dotfiles.git

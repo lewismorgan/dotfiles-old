@@ -64,12 +64,12 @@ done
 if ! command -v brew >/dev/null 2>&1; then
   echo "Installing homebrew 🍺"
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
 
-  # Now use the brewfile if it exists
-  if [ -f "$HOME/.Brewfile" ]; then
-    echo "Installing from the brewfile 🍻"
-    brew bundle --global
-  fi
+# Now use the brewfile if it exists
+if [ -f "$HOME/.Brewfile" ]; then
+  echo "Installing from the brewfile 🍻"
+  brew bundle --global
 fi
 
 # Set up the launchd jobs
@@ -89,7 +89,7 @@ fi
 
 # iTerm2 Setup
 if [ ! -f "$HOME/.iterm2/Broadcast.itermcolorstheme" ]; then
-  echo "Downloading iTerm2 Broadcast theme 🖥"
+  echo "Downloading iTerm2 themes 🖥"
   curl https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Broadcast.itermcolorstheme -o $HOME/.iterm2/Broadcast.itermcolorstheme
   curl https://raw.githubusercontent.com/chriskempson/tomorrow-theme/master/iTerm2/Tomorrow%20Night.itermcolors -o $HOME/.iterm2/TomorrowNight.itermcolors
 fi
@@ -107,7 +107,7 @@ if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel9k" ]; then
 fi
 
 # Handy utility for getting network status. Airport utility is not located within the system path, so just create a symlink.
-if [ ! -f "$HOME/bin/airport"]; then
+if [ ! -f "$HOME/bin/airport" ]; then
   echo "Creating airport symlink in bin folder ✈️"
   sudo ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport $HOME/bin/airport
 fi
@@ -129,4 +129,4 @@ writeDefaults()
 
 echo "Finished setting up the environment! Changing shell to ZSH. 👍"
 # Change the shell to ZSH --- Keep this as the last line otherwise nothing will run after.
-chsh -s /bin/zsh
+chsh -s $(grep /zsh$ /etc/shells | tail -1)
