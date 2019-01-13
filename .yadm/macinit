@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+writeDefaults() {
+  echo "Writing defaults 🔖"
+  # Show hidden files on the system in finder (requires a restart once written. Cmd + Shift + . to display hidden files in open dialogs)
+  defaults write com.apple.finder AppleShowAllFiles YES
+
+  # iTerm2
+
+  # Specify the preferences directory
+  defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/iterm2"
+  # Use the custom preferences in the directory
+  defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
+}
+
+# install homebrew if it's missing
+if ! command -v brew >/dev/null 2>&1; then
+  echo "Installing homebrew 🍺"
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
+# Now use the brewfile if it exists
+if [ -f "$HOME/.Brewfile" ]; then
+  echo "Installing from the brewfile 🍻"
+  brew bundle --global
+fi
+
+# Set up the launchd jobs
+if [ -d "$HOME/.launchd" ]; then
+  echo "Symlinking launch agent definitions 📁"
+  if [ ! -d "$HOME/Library/LaunchAgents" ]; then
+    mkdir $HOME/Library/LaunchAgents
+  fi
+
+  ln -s $HOME/.launchd/com.lewisjmorgan.daily.plist $HOME/Library/LaunchAgents
+  ln -s $HOME/.launchd/com.lewisjmorgan.weekly.plist $HOME/Library/LaunchAgents
+  
+  echo "Hooking launch agents up to launchctl 🚀"
+  launchctl load $HOME/Library/LaunchAgents/com.lewisjmorgan.daily.plist
+  launchctl load $HOME/Library/LaunchAgents/com.lewisjmorgan.weekly.plist
+fi
+
+writeDefaults
