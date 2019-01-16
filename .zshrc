@@ -12,7 +12,7 @@ export NODE_PATH='/usr/local/lib/node_modules'
 
 export ANDROID_SDK_ROOT="/Users/lewismorgan/Library/Android/sdk"
 
-# export EDITOR="/Applications/Visual Studio Code.app/Contents/MacOS/Electron"
+export EDITOR="'/Applications/Visual Studio Code.app/Contents/MacOS/Electron' -w"
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/lewismorgan/.oh-my-zsh
