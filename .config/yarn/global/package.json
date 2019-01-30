@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "create-react-kotlin-app": "^1.0.11",
-    "serve": "^10.1.1"
+    "pure-prompt": "^1.9.0",
+    "serve": "^10.1.1",
+    "syncyarnlock": "^1.0.12"
   }
 }
