@@ -1,0 +1,1 @@
+cat /private/etc/motd
