@@ -19,19 +19,33 @@ CheckForNetwork()
 	fi
 }
 
-CheckForNetwork
+PerformDailyUpdates()
+{
+	CheckForNetwork
 
-while [ "${NETWORKUP}" != "-YES-" ]
-do
-  sleep 300
-  NETWORKUP=
-  CheckForNetwork
-done
+	while [ "${NETWORKUP}" != "-YES-" ]
+	do
+		sleep 1m
+		NETWORKUP=
+		CheckForNetwork
+	done
+	
+	DATE=$(date +%d-%m-%Y" "%H:%M:%S )
 
-DATE=$(date +%d-%m-%Y" "%H:%M:%S )
-echo "| 🕥 $DATE | Performing daily Homebrew update 🍺."
-# Update Homebrew
-brew update
-brew upgrade
+	echo ""
+	echo "| 🕥 $DATE | Performing daily Homebrew update 🍺."
 
-echo "||||| Finished running daily script ☑️ |||||"
+	PerformDailyHomebrewUpdates
+	
+	echo "||||| Finished running daily script ☑️ |||||"
+}
+
+PerformDailyHomebrewUpdates()
+{
+	# Update Homebrew
+	brew update
+	brew upgrade
+}
+
+PerformDailyUpdates
+echo 'Finished daily update tasks' | terminal-notifier -title 'Updated' -subtitle 'Daily' -execute 'code ~/.launchd' -sound default
