@@ -12,9 +12,11 @@ postinit() {
 # Global npm modules to install
 yarnModules() {
   echo "Installing global yarn packages 🧶"
-  # Gulp
   yarn global add gulp-cli
   yarn global add create-react-kotlin-app
+  yarn global add fontello-cli
+  yarn global add serve
+  yarn global add syncyarnlock
 }
 
 # Java Environments to setup
