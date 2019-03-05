@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Script to update iOS project with Carthage & Rome
+
+carthage update --platform iOS --cache-builds # build dependencies missing a .version file or that where not found in the cache
+rome list --missing --platform iOS | awk '{print $1}' | xargs rome upload --platform iOS # upload what is missing
