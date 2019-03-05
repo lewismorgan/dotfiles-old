@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 
-# Bootstrap for 'Yet Another Dotfiles Manager' to setup my environment.
+# Bootstrap for 'Yet Another Dotfiles Manager' to setup my environment. Run after Homebrew installs.
 # Created by Lewis Morgan
 
 postinit() {
   setupJenv
+  setupPython
   yarnModules
 }
 
@@ -23,6 +24,10 @@ setupJenv() {
   ~/.yadm/bin/jadd
   # Use Java 11 as the global (default is set at system, explicilty define the one we wanna use though as java 11)
   jenv global 11.0
+}
+
+setupPython() {
+  ln -s $(brew --prefix)/opt/python/libexec/bin ~/.pyenv/versions/3-brew
 }
 
 installZshThemes() {
@@ -73,6 +78,7 @@ main() {
   postinit
 
   echo "Finished setting up the environment! Changing shell to ZSH. 👍"
+
   # Change the shell to ZSH --- Keep this as the last line otherwise nothing will run after.
   chsh -s $(grep /zsh$ /etc/shells | tail -1)
 }

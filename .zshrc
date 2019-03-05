@@ -1,8 +1,8 @@
 
 ### PATH EXPORTS ###
 export PATH=$HOME/bin:$PATH
-# Python env paths
 export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
 ### MISC EXPORTS ###
 export EDITOR="'/Applications/Visual Studio Code.app/Contents/MacOS/Electron' -w"
@@ -43,14 +43,15 @@ eval "$(nodenv init -)"
 # Ruby
 #eval "$(rbenv init -)"
 
-# Python init
-#if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+# Python init from peynv and/or virtualenv
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 # Swiftenv
-if which swiftenv > /dev/null; then eval "$(swiftenv init -)"; fi
+#if which swiftenv > /dev/null; then eval "$(swiftenv init -)"; fi
 
 # Xcenv
-eval "$(xcenv init -)"
+#eval "$(xcenv init -)"
 
 # JEnv
 eval "$(jenv init -)"

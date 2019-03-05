@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # install homebrew if it's missing
 if ! command -v brew >/dev/null 2>&1; then
   echo "Installing homebrew 🍺"
@@ -10,4 +12,5 @@ if ! command yadm >/dev/null 2>&1; then
   brew install yadm
 fi
 
+# Clone the dotfiles
 yadm clone https://github.com/lewismorgan/dotfiles.git
