@@ -32,8 +32,7 @@ prompt pure
 ### ALIASES ###
 
 # User Config
-alias xcode="open -a Xcode"
-alias kraken="open -a 'GitKraken' --args -p $(pwd)"
+source ~/bin/init_aliases
 
 ### ENVIRONMENTS ###
 
