@@ -4,6 +4,10 @@ export PATH=$HOME/bin:$PATH
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
+export PATH="$HOME/.fastlane/bin:$PATH"
+
+export GEM_HOME=~/.gems
+
 ### MISC EXPORTS ###
 export EDITOR="'/Applications/Visual Studio Code.app/Contents/MacOS/Electron' -w"
 export ZSH=/Users/lewismorgan/.oh-my-zsh
@@ -29,6 +33,10 @@ export PURE_GIT_UP_ARROW=↑
 autoload -U promptinit; promptinit
 prompt pure
 
+### GPG Keys ###
+# Git commits for gpg won't work unless this is used
+export GPG_TTY=$(tty)
+
 ### ALIASES ###
 
 # User Config
@@ -47,7 +55,7 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 # Swiftenv
-#if which swiftenv > /dev/null; then eval "$(swiftenv init -)"; fi
+if which swiftenv > /dev/null; then eval "$(swiftenv init -)"; fi
 
 # Xcenv
 #eval "$(xcenv init -)"
