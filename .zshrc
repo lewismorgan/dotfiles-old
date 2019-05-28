@@ -2,31 +2,27 @@
 ### PATH EXPORTS ###
 export PATH=$HOME/bin:$PATH
 export PATH="/usr/local/sbin:$PATH"
+export PATH=$HOME/.yarn/bin:$PATH
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
 export PATH="$HOME/.fastlane/bin:$PATH"
 
-export GEM_HOME=~/.gems
+#export GEM_HOME="$HOME/.gems"
+#export PATH="$HOME/.gems/bin:$PATH"
 
 ### MISC EXPORTS ###
 export EDITOR="'/Applications/Visual Studio Code.app/Contents/MacOS/Electron' -w"
 export ZSH=/Users/lewismorgan/.oh-my-zsh
+export NODE_BUILD_DEFINITIONS="$(brew --prefix node-build-update-defs)/share/node-build"
 
 ### OH-MY-ZSH ###
-#ZSH_THEME="spaceship"
 # Disable themes
 ZSH_THEME=""
-# Source spaceship customizations.
-#[[ -f ~/.zsh/chimaera ]] && source ~/.zsh/chimaera
-
-# Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
-
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
+# ZSH plugins
 plugins=(iterm2)
 source $ZSH/oh-my-zsh.sh
+
 # Pure prompt
 export PURE_GIT_DOWN_ARROW=↵
 export PURE_GIT_UP_ARROW=↑
@@ -45,10 +41,10 @@ source ~/bin/init_aliases
 ### ENVIRONMENTS ###
 
 # NodeEnv init
-eval "$(nodenv init -)"
+if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi
 
 # Ruby
-#eval "$(rbenv init -)"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # Python init from peynv and/or virtualenv
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi

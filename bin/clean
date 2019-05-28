@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+echo "Cleaning system"
+# Delete all but linked versions of software
+brew cleanup -s
+
+# Run mac-cleanup
+cleanup

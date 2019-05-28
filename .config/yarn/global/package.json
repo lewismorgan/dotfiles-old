@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "create-react-kotlin-app": "^1.0.11",
+    "fakeit": "^1.4.0",
+    "fontello-cli": "^0.4.0",
+    "ignite-cli": "^3.1.1",
+    "pure-prompt": "^1.9.0",
+    "react-native-cli": "^2.0.1",
+    "serve": "^10.1.1",
+    "syncyarnlock": "^1.0.12",
+    "yarn-upgrade-all": "^0.5.0"
+  }
+}

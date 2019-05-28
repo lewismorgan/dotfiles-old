@@ -17,6 +17,10 @@ yarnModules() {
   yarn global add fontello-cli
   yarn global add serve
   yarn global add syncyarnlock
+  yarn global add pure-prompt
+  yarn global add react-native-cli
+  yarn global add ignite-cli
+  yarn global add fakeit
 }
 
 # Java Environments to setup
@@ -37,12 +41,6 @@ installZshThemes() {
   if [ ! -d "$ZSH_CUSTOM/themes/themes/powerlevel9k" ]; then
     echo "Installing PowerLevel9K ⏫"
     git clone https://github.com/bhilburn/powerlevel9k.git $HOME/.oh-my-zsh/custom/themes/powerlevel9k
-  fi
-
-  if [ ! -d "$ZSH_CUSTOM/themes/spaceship-prompt" ]; then
-    echo "Installing Spaceship 🚀"
-    git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
-    ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
   fi
 }
 
