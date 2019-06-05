@@ -3,16 +3,6 @@
 # Bootstrap for 'Yet Another Dotfiles Manager' to setup my environment.
 # Created by Lewis Morgan
 
-# Create a bin folder for user scripts
-if [ ! -d "$HOME/bin" ]; then
-  mkdir $HOME/bin
-fi
-
-# Symlink all files in .yadm/bin to bin/*, these are custom scripts
-for file in $HOME/.yadm/bin/*; do
-  ln -s ${file} $HOME/bin/${file##*/}
-done
-
 # System Check
 if [ "$OSTYPE" = linux-gnu ]; then
   linux_setup

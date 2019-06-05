@@ -37,3 +37,4 @@ ln -s "$HOME/.vscode/settings.json" "$HOME/Library/Application Support/Code/User
 writeDefaults
 scheduledTasks
 
+echo "Mac Setup Finished 👨🏼‍💻"

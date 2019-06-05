@@ -3,6 +3,10 @@
 # Install everything
 
 mac_install() {
+  for file in $HOME/.yadm/bin/mac/*; do
+    ln -s ${file} $HOME/bin/${file##*/}
+  done
+
   # Homebrew
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
@@ -11,8 +15,20 @@ mac_install() {
 }
 
 linux_install() {
-
+  for file in $HOME/.yadm/bin/linux/*; do
+    cp ${file} $HOME/bin/${file##*/}
+    ln -s $HOME/bin/${file##*/} ${file}
+  done
 }
+
+# Create a bin folder for user scripts
+if [ ! -d "$HOME/bin" ]; then
+  mkdir $HOME/bin
+fi
+
+for file in $HOME/.yadm/bin/all/*; do
+  ln -s ${file} $HOME/bin/${file##*/}
+done
 
 # System Check
 if [ "$OSTYPE" = linux-gnu ]; then
