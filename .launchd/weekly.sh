@@ -11,4 +11,7 @@ clean
 # Update the system
 update
 
+# Remove daily log file
+rm -f ~/daily.log
+
 echo 'Finished weekly update tasks' | terminal-notifier -title 'Updated' -subtitle 'Weekly' -execute 'code ~/.launchd' -sound default

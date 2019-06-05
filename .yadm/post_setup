@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+# Stuff thats not system dependent, used after system setup
+
+install_packages() {
+  echo "Installing global yarn packages 🧶"
+  # TODO: Add global yarns from a text file
+  yarn global add pure-prompt
+  yarn global add gulp-cli
+  yarn global add serve
+  yarn global add syncyarnlock
+  yarn global add react-native-cli
+  yarn global add ignite-cli
+  yarn global add fakeit
+}
+
+# Java Environments to setup
+setup_jenv() {
+  jenv enable-plugin export
+  # Add all java environments using custom jadd script
+  ~/.yadm/bin/jadd
+  # Use Java 11 as the global (default is set at system, explicilty define the one we wanna use though as java 11)
+  jenv global 11.0
+}
+
+# ZSH Setup
+setup_zsh() {
+  # Install oh-my-zsh
+  if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    echo "Installing oh-my-zsh 💻"
+    git clone https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
+  fi
+
+  # Install powerlevel9k
+  if [ ! -d "$ZSH_CUSTOM/themes/themes/powerlevel9k" ]; then
+    echo "Installing PowerLevel9K ⏫"
+    git clone https://github.com/bhilburn/powerlevel9k.git $HOME/.oh-my-zsh/custom/themes/powerlevel9k
+  fi
+}
+
+install_packages
+setup_zsh
+setup_jenv

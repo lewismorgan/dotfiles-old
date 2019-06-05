@@ -1,0 +1,15 @@
+{
+    "editor.fontLigatures": true,
+    "editor.fontFamily": "FuraCode Nerd Font",
+    "editor.tabSize": 2,
+    "emojisense.languages": {
+        "markdown": true,
+        "git-commit": true,
+        "shellscript": true,
+    },
+    "python.jediEnabled": false,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "sourcekit-lsp.serverPath": "/Users/lewismorgan/dev/sourcekit-lsp/.build/debug/sourcekit-lsp",
+    "sourcekit-lsp.toolchainPath": "/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin"
+}

@@ -1,86 +1,25 @@
 #!/usr/bin/env bash
 
-# Bootstrap for 'Yet Another Dotfiles Manager' to setup my environment. Run after Homebrew installs.
+# Bootstrap for 'Yet Another Dotfiles Manager' to setup my environment.
 # Created by Lewis Morgan
 
-postinit() {
-  setupJenv
-  setupPython
-  yarnModules
-}
+# Create a bin folder for user scripts
+if [ ! -d "$HOME/bin" ]; then
+  mkdir $HOME/bin
+fi
 
-# Global npm modules to install
-yarnModules() {
-  echo "Installing global yarn packages 🧶"
-  yarn global add gulp-cli
-  yarn global add create-react-kotlin-app
-  yarn global add fontello-cli
-  yarn global add serve
-  yarn global add syncyarnlock
-  yarn global add pure-prompt
-  yarn global add react-native-cli
-  yarn global add ignite-cli
-  yarn global add fakeit
-}
+# Symlink all files in .yadm/bin to bin/*, these are custom scripts
+for file in $HOME/.yadm/bin/*; do
+  ln -s ${file} $HOME/bin/${file##*/}
+done
 
-# Java Environments to setup
-setupJenv() {
-  jenv enable-plugin export
-  # Add all java environments using custom jadd script
-  ~/.yadm/bin/jadd
-  # Use Java 11 as the global (default is set at system, explicilty define the one we wanna use though as java 11)
-  jenv global 11.0
-}
+# System Check
+if [ "$OSTYPE" = linux-gnu ]; then
+  linux_setup
+else
+  mac_setup
+fi
 
-setupPython() {
-  ln -s $(brew --prefix)/opt/python/libexec/bin ~/.pyenv/versions/3-brew
-}
+post_setup
 
-installZshThemes() {
-  # Install powerlevel9k
-  if [ ! -d "$ZSH_CUSTOM/themes/themes/powerlevel9k" ]; then
-    echo "Installing PowerLevel9K ⏫"
-    git clone https://github.com/bhilburn/powerlevel9k.git $HOME/.oh-my-zsh/custom/themes/powerlevel9k
-  fi
-}
-
-main() {
-  if [ "$OSTYPE" = linux-gnu ]; then
-    linuxinit
-  else
-    macinit
-  fi
-
-  # Create a bin folder for user scripts
-  if [ ! -d "$HOME/bin" ]; then
-    mkdir $HOME/bin
-  fi
-
-  # Symlink all files in .yadm/bin to bin/*, these are custom scripts
-  for file in $HOME/.yadm/bin/*; do
-    ln -s ${file} $HOME/bin/${file##*/}
-  done
-
-  # Install oh-my-zsh
-  if [ ! -d "$HOME/.oh-my-zsh" ]; then
-    echo "Installing oh-my-zsh 💻"
-    git clone https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
-  fi
-
-  installZshThemes
-
-  # Create symlinks for vscode settings if installed
-  if [ -d "$HOME/Library/Application\ Support/Code" ]; then
-    echo "Symlinking vscode settings ⚙️"
-    ln -s "$HOME/.vscode/settings/settings.json" "$HOME/Library/Application\ Support/Code/User/settings.json"
-  fi
-
-  postinit
-
-  echo "Finished setting up the environment! Changing shell to ZSH. 👍"
-
-  # Change the shell to ZSH --- Keep this as the last line otherwise nothing will run after.
-  chsh -s $(grep /zsh$ /etc/shells | tail -1)
-}
-
-main
+echo "Finished bootstrapping the system! 👍"

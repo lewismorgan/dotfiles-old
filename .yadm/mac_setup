@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Initialization script to finish setting up Mac after installing packages
+
 writeDefaults() {
   echo "Writing defaults 🔖"
   # Show hidden files on the system in finder (requires a restart once written. Cmd + Shift + . to display hidden files in open dialogs)
@@ -13,20 +15,7 @@ writeDefaults() {
   defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
 }
 
-# install homebrew if it's missing
-if ! command -v brew >/dev/null 2>&1; then
-  echo "Installing homebrew 🍺"
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-fi
-
-# Now use the brewfile if it exists
-if [ -f "$HOME/.Brewfile" ]; then
-  echo "Installing from the brewfile 🍻"
-  brew bundle --global
-fi
-
-# Set up the launchd jobs
-if [ -d "$HOME/.launchd" ]; then
+scheduledTasks() {
   echo "Symlinking launch agent definitions 📁"
   if [ ! -d "$HOME/Library/LaunchAgents" ]; then
     mkdir $HOME/Library/LaunchAgents
@@ -38,6 +27,13 @@ if [ -d "$HOME/.launchd" ]; then
   echo "Hooking launch agents up to launchctl 🚀"
   launchctl load $HOME/Library/LaunchAgents/com.lewisjmorgan.daily.plist
   launchctl load $HOME/Library/LaunchAgents/com.lewisjmorgan.weekly.plist
-fi
+}
+
+# Python3 as default python
+ln -s $(brew --prefix)/opt/python/libexec/bin ~/.pyenv/versions/3-brew
+# Symlink vscode settings
+ln -s "$HOME/.vscode/settings.json" "$HOME/Library/Application Support/Code/User/settings.json"
 
 writeDefaults
+scheduledTasks
+

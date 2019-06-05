@@ -1,16 +1,27 @@
 #!/usr/bin/env bash
 
-# install homebrew if it's missing
-if ! command -v brew >/dev/null 2>&1; then
-  echo "Installing homebrew 🍺"
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-fi
+# Install everything
 
-# install yadm
-if ! command yadm >/dev/null 2>&1; then
-  echo "Installing yadm ⚙️"
-  brew install yadm
+mac_install() {
+  # Homebrew
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+  brew bundle --file "$HOME/.yadm/Brewfile"
+  # Rest is done when bootstrapped
+}
+
+linux_install() {
+
+}
+
+# System Check
+if [ "$OSTYPE" = linux-gnu ]; then
+  linux_setup
+else
+  mac_setup
 fi
 
 # Clone the dotfiles
 yadm clone https://github.com/lewismorgan/dotfiles.git
+# Change the shell to ZSH --- Keep this as the last line otherwise nothing will run after.
+chsh -s $(grep /zsh$ /etc/shells | tail -1)
