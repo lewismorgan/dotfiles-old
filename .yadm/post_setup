@@ -2,25 +2,42 @@
 
 # Stuff thats not system dependent, used after system setup
 
+# Most of the time these are already installed system wide
+VERSION_NODE=12.4.0
+VERSION_RUBY=2.6.3
+
 install_packages() {
   echo "Installing global yarn packages 🧶"
-  # TODO: Add global yarns from a text file
-  yarn global add pure-prompt
-  yarn global add gulp-cli
-  yarn global add serve
-  yarn global add syncyarnlock
-  yarn global add react-native-cli
-  yarn global add ignite-cli
-  yarn global add fakeit
+  cat $HOME/.yadm/yarn.txt | xargs -L 1 yarn global add
+
+  echo "Installing vscode packages ⚙️"
+  cat $HOME/.yadm/vscode.txt | xargs -L 1 code --install-extension
+}
+
+setup_node() {
+  nodenv install $VERSION_NODE
+
+  # System installed version should always be the homebrew version
+  nodenv global system
+}
+
+setup_ruby() {
+  # Install rbenv default gems plugin
+  git clone https://github.com/rbenv/rbenv-default-gems.git $(rbenv root)/plugins/rbenv-default-gems
+
+  rbenv install $VERSION_RUBY
+
+  # System installed version should always be the homebrew version
+  rbenv global system
 }
 
 # Java Environments to setup
 setup_jenv() {
   jenv enable-plugin export
   # Add all java environments using custom jadd script
-  ~/.yadm/bin/jadd
-  # Use Java 11 as the global (default is set at system, explicilty define the one we wanna use though as java 11)
-  jenv global 11.0
+  jadd
+  # Use system as the global
+  jenv global system
 }
 
 # ZSH Setup

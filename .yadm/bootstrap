@@ -1,15 +1,18 @@
 #!/usr/bin/env bash
 
-# Bootstrap for 'Yet Another Dotfiles Manager' to setup my environment.
-# Created by Lewis Morgan
+# Bootstrap setup script depending on system
 
-# System Check
-if [ "$OSTYPE" = linux-gnu ]; then
-  linux_setup
-else
-  mac_setup
+system_type=$(uname -s)
+
+if [ "$system_type" = "Darwin" ]; then
+  brew bundle --file="$HOME/.yadm/Brewfile"
+  $HOME/.yadm/mac_setup
 fi
 
-post_setup
+# if [ "$OSTYPE" = linux-gnu ]; then
+#   $HOME/.yadm/linux_setup
+# fi
+
+$HOME/.yadm/post_setup
 
 echo "Finished bootstrapping the system! 👍"

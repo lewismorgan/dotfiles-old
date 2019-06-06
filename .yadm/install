@@ -1,22 +1,26 @@
 #!/usr/bin/env bash
 
-# Install everything
+# Wrapper script to install everything through YADM
+# Created by Lewis Morgan
+
+system_type=$(uname -s)
 
 mac_install() {
   for file in $HOME/.yadm/bin/mac/*; do
     ln -s ${file} $HOME/bin/${file##*/}
   done
 
+  # Dev tools
+  xcode-select --install
+  
   # Homebrew
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-  brew bundle --file "$HOME/.yadm/Brewfile"
-  # Rest is done when bootstrapped
+  brew install yadm
+  # Setup of packages is done during bootstrap
 }
 
 linux_install() {
   for file in $HOME/.yadm/bin/linux/*; do
-    cp ${file} $HOME/bin/${file##*/}
     ln -s $HOME/bin/${file##*/} ${file}
   done
 }
@@ -30,14 +34,9 @@ for file in $HOME/.yadm/bin/all/*; do
   ln -s ${file} $HOME/bin/${file##*/}
 done
 
-# System Check
-if [ "$OSTYPE" = linux-gnu ]; then
-  linux_setup
-else
-  mac_setup
-fi
-
 # Clone the dotfiles
-yadm clone https://github.com/lewismorgan/dotfiles.git
+yadm clone https://github.com/lewismorgan/dotfiles.git --no-bootstrap
+yadm bootstrap
+
 # Change the shell to ZSH --- Keep this as the last line otherwise nothing will run after.
 chsh -s $(grep /zsh$ /etc/shells | tail -1)

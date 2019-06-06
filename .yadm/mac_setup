@@ -16,7 +16,8 @@ writeDefaults() {
 }
 
 scheduledTasks() {
-  echo "Symlinking launch agent definitions 📁"
+  echo "Creating & Hooking launch agents up to launchctl 🚀"
+
   if [ ! -d "$HOME/Library/LaunchAgents" ]; then
     mkdir $HOME/Library/LaunchAgents
   fi
@@ -24,7 +25,6 @@ scheduledTasks() {
   ln -s $HOME/.launchd/com.lewisjmorgan.daily.plist $HOME/Library/LaunchAgents
   ln -s $HOME/.launchd/com.lewisjmorgan.weekly.plist $HOME/Library/LaunchAgents
   
-  echo "Hooking launch agents up to launchctl 🚀"
   launchctl load $HOME/Library/LaunchAgents/com.lewisjmorgan.daily.plist
   launchctl load $HOME/Library/LaunchAgents/com.lewisjmorgan.weekly.plist
 }

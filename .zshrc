@@ -7,9 +7,6 @@ export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
 export PATH="$HOME/.fastlane/bin:$PATH"
 
-#export GEM_HOME="$HOME/.gems"
-#export PATH="$HOME/.gems/bin:$PATH"
-
 ### MISC EXPORTS ###
 export EDITOR="'/Applications/Visual Studio Code.app/Contents/MacOS/Electron' -w"
 export ZSH=/Users/lewismorgan/.oh-my-zsh
@@ -54,7 +51,7 @@ if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -
 if which swiftenv > /dev/null; then eval "$(swiftenv init -)"; fi
 
 # Xcenv
-#eval "$(xcenv init -)"
+eval "$(xcenv init -)"
 
 # JEnv
 eval "$(jenv init -)"
