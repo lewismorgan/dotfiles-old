@@ -50,9 +50,6 @@ if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -
 # Swiftenv
 if which swiftenv > /dev/null; then eval "$(swiftenv init -)"; fi
 
-# Xcenv
-eval "$(xcenv init -)"
-
 # JEnv
 eval "$(jenv init -)"
 export JAVA_HOME="$HOME/.jenv/versions/`jenv version-name`"

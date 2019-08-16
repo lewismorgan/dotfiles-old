@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
 
 # Wrapper script to install everything through YADM
+# Installs custom binaries onto the system and then bootstraps packages through YADM.
 # Created by Lewis Morgan
 
 system_type=$(uname -s)
 
-mac_install() {
-  for file in $HOME/.yadm/bin/mac/*; do
+mac_bin_install() {
+  for file in $HOME/.yadm/mac/bin/*; do
     ln -s ${file} $HOME/bin/${file##*/}
   done
 
-  # Dev tools
+  # Dev tools required for Homebrew
   xcode-select --install
   
   # Homebrew
@@ -20,21 +21,26 @@ mac_install() {
 }
 
 linux_install() {
-  for file in $HOME/.yadm/bin/linux/*; do
+  for file in $HOME/.yadm/linux/bin/*; do
     ln -s $HOME/bin/${file##*/} ${file}
   done
+  # Setup of packages is done during bootstrap
 }
+
+### TODO: Check system_type if mac or linux
+mac_bin_install
 
 # Create a bin folder for user scripts
 if [ ! -d "$HOME/bin" ]; then
   mkdir $HOME/bin
 fi
 
-for file in $HOME/.yadm/bin/all/*; do
+for file in $HOME/.yadm/all/bin/*; do
   ln -s ${file} $HOME/bin/${file##*/}
 done
 
-# Clone the dotfiles
+
+# Clone the dotfiles repository to setup everything else
 yadm clone https://github.com/lewismorgan/dotfiles.git --no-bootstrap
 yadm bootstrap
 

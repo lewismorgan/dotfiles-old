@@ -26,9 +26,11 @@ setup_ruby() {
   git clone https://github.com/rbenv/rbenv-default-gems.git $(rbenv root)/plugins/rbenv-default-gems
 
   rbenv install $VERSION_RUBY
-
-  # System installed version should always be the homebrew version
-  rbenv global system
+  rbenv global $VERSION_RUBY
+  
+  # TODO: Pick default_gems based on system
+  git clone https://github.com/rbenv/rbenv-default-gems.git $(rbenv root)/plugins/rbenv-default-gems
+  cp $HOME/.yadm/mac/default_gems $HOME/.rbenv/default_gems
 }
 
 # Java Environments to setup
@@ -55,6 +57,7 @@ setup_zsh() {
   fi
 }
 
+setup_ruby
 install_packages
 setup_zsh
 setup_jenv

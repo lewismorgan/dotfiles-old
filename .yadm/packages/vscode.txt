@@ -19,13 +19,13 @@ IronLu233.vscode-color-exchange
 Janne252.fontawesome-autocomplete
 kamikillerto.vscode-colorize
 mariusschulz.yarn-lock-syntax
+ms-azuretools.vscode-docker
 ms-python.python
 ms-vscode.Theme-TomorrowKit
 msjsdiag.vscode-react-native
 Orta.vscode-ios-common-files
 Orta.vscode-react-native-storybooks
 PBeast.lanes-navigator
-PeterJausovec.vscode-docker
 rebornix.ruby
 ritwickdey.live-sass
 ritwickdey.LiveServer
