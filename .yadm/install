@@ -27,7 +27,6 @@ linux_install() {
   # Setup of packages is done during bootstrap
 }
 
-### TODO: Check system_type if mac or linux
 mac_bin_install
 
 # Create a bin folder for user scripts
@@ -38,7 +37,6 @@ fi
 for file in $HOME/.yadm/all/bin/*; do
   ln -s ${file} $HOME/bin/${file##*/}
 done
-
 
 # Clone the dotfiles repository to setup everything else
 yadm clone https://github.com/lewismorgan/dotfiles.git --no-bootstrap

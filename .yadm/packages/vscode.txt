@@ -19,6 +19,7 @@ IronLu233.vscode-color-exchange
 Janne252.fontawesome-autocomplete
 kamikillerto.vscode-colorize
 mariusschulz.yarn-lock-syntax
+mgmcdermott.vscode-language-babel
 ms-azuretools.vscode-docker
 ms-python.python
 ms-vscode.Theme-TomorrowKit
@@ -31,8 +32,7 @@ ritwickdey.live-sass
 ritwickdey.LiveServer
 robinbentley.sass-indented
 rpinski.shebang-snippets
-sdras.night-owl
-unpublished.sourcekit-lsp
 VisualStudioExptTeam.vscodeintellicode
+vknabel.vscode-swift-development-environment
 wayou.vscode-todo-highlight
 zhouronghui.propertylist

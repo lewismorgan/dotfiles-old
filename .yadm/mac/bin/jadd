@@ -2,7 +2,6 @@
 
 # Simple shell script to link jdk's in the JavaVirtualMachines directory 
 
-# TODO: Change install location based on system
 JAVA_INSTALL_LOC=/Library/Java/JavaVirtualMachines
 BLUE='\033[0;34m'
 

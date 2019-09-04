@@ -9,7 +9,5 @@
     },
     "python.jediEnabled": false,
     "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "sourcekit-lsp.serverPath": "/Users/lewismorgan/dev/sourcekit-lsp/.build/debug/sourcekit-lsp",
-    "sourcekit-lsp.toolchainPath": "/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin"
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"
 }

@@ -3,7 +3,7 @@
 # Stuff thats not system dependent, used after system setup
 
 # Most of the time these are already installed system wide
-VERSION_NODE=12.4.0
+VERSION_NODE=12.7.0
 VERSION_RUBY=2.6.3
 
 install_packages() {
