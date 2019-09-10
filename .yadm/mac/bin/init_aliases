@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-alias xcode="open -a Xcode"
-alias kraken="open -a 'GitKraken' --args -p $(pwd)"
-alias holodex="cd ~/dev/holodex"
-alias vytality="cd ~/dev/vytality/ios"
-alias tripology="cd ~/dev/tripology"
-alias brew='env PATH=${PATH//$(pyenv root)\/shims:/} brew'

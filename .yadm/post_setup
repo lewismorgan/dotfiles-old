@@ -44,20 +44,13 @@ setup_jenv() {
 
 # ZSH Setup
 setup_zsh() {
-  # Install oh-my-zsh
-  if [ ! -d "$HOME/.oh-my-zsh" ]; then
-    echo "Installing oh-my-zsh 💻"
-    git clone https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
-  fi
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
+  
 
-  # Install powerlevel9k
-  if [ ! -d "$ZSH_CUSTOM/themes/themes/powerlevel9k" ]; then
-    echo "Installing PowerLevel9K ⏫"
-    git clone https://github.com/bhilburn/powerlevel9k.git $HOME/.oh-my-zsh/custom/themes/powerlevel9k
-  fi
 }
 
+cp "$HOME/.yadm/.env" "$HOME/.env"
 setup_ruby
 install_packages
-setup_zsh
 setup_jenv
+setup_zsh

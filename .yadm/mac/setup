@@ -29,7 +29,6 @@ scheduledTasks() {
   launchctl load $HOME/Library/LaunchAgents/com.lewisjmorgan.weekly.plist
 }
 
-ln -s "$HOME/.yadm/Brewfile" "$HOME/Brewfile"
 # Python3 as default python
 ln -s $(brew --prefix)/opt/python/libexec/bin ~/.pyenv/versions/3-brew
 # Symlink vscode settings

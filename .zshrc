@@ -1,41 +1,16 @@
 
 ### PATH EXPORTS ###
 export PATH=$HOME/bin:$PATH
-export PATH="/usr/local/sbin:$PATH"
-export PATH=$HOME/.yarn/bin:$PATH
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
-export PATH="$HOME/.fastlane/bin:$PATH"
-
-### MISC EXPORTS ###
-export EDITOR="'/Applications/Visual Studio Code.app/Contents/MacOS/Electron' -w"
-export ZSH=/Users/lewismorgan/.oh-my-zsh
-export NODE_BUILD_DEFINITIONS="$(brew --prefix node-build-update-defs)/share/node-build"
-
-### OH-MY-ZSH ###
-# Disable themes
-ZSH_THEME=""
-ENABLE_CORRECTION="true"
-# ZSH plugins
-plugins=(iterm2)
-source $ZSH/oh-my-zsh.sh
-
-# Pure prompt
-export PURE_GIT_DOWN_ARROW=↵
-export PURE_GIT_UP_ARROW=↑
-autoload -U promptinit; promptinit
-prompt pure
+# Environment
+source $HOME/.env
+source $HOME/bin/init-env
 
 ### GPG Keys ###
 # Git commits for gpg won't work unless this is used
 export GPG_TTY=$(tty)
 
-### ALIASES ###
-
-# User Config
-source ~/bin/init_aliases
-
-### ENVIRONMENTS ###
+### VERSIONING ENVIRONMENTS ###
 
 # NodeEnv init
 if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi
@@ -47,15 +22,20 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
-# Swiftenv
-if which swiftenv > /dev/null; then eval "$(swiftenv init -)"; fi
-
 # JEnv
 eval "$(jenv init -)"
 export JAVA_HOME="$HOME/.jenv/versions/`jenv version-name`"
 alias jenv_set_java_home='export JAVA_HOME="$HOME/.jenv/versions/`jenv version-name`"'
 
-### MISC ###
+### Keep these at the end ###
 
-# Syntax highligthing
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+### Added by Zplugin's installer
+source $HOME/.zplugin/bin/zplugin.zsh
+autoload -Uz _zplugin
+(( ${+_comps} )) && _comps[zplugin]=_zplugin
+### End of Zplugin installer's chunk
+
+zplugin ice wait atload'_zsh_autosuggest_start'; zplugin light zsh-users/zsh-autosuggestions
+zplugin ice atinit"_config_powerline"; zplugin light romkatv/powerlevel10k
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
