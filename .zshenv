@@ -1,1 +1,1 @@
-cat /private/etc/motd
+source $HOME/.motd

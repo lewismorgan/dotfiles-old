@@ -6,7 +6,7 @@ export PATH=$HOME/bin:$PATH
 source $HOME/.env
 source $HOME/bin/init-env
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-#ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#f0efc7,bg=black"
+export ITERM2_SQUELCH_MARK=1
 
 ### GPG Keys ###
 # Git commits for gpg won't work unless this is used
@@ -40,32 +40,26 @@ autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 ### End of Zplugin installer's chunk
 
-_config_powerline() {
+_vdbk_p10k_theme() {
+  POWERLEVEL9K_PROMPT_CHAR_OK_VIINS_CONTENT_EXPANSION=$'\uf101'
+  POWERLEVEL9K_PROMPT_CHAR_ERROR_VIINS_CONTENT_EXPANSION=$'\uf101'
   POWERLEVEL9K_VCS_GIT_GITHUB_ICON=
   POWERLEVEL9K_APPLE_ICON=$'\uf1d1 '
   # Etc
   POWERLEVEL9K_DIR_HOME_BACKGROUND="clear"
   POWERLEVEL9K_DIR_HOME_FOREGROUND="blue"
   POWERLEVEL9K_RBENV_PROMPT_ALWAYS_SHOW=true
-  POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
-      # =========================[ Line #1 ]=========================
-      status                  # exit code of the last command
-      command_execution_time  # duration of the last command
-      background_jobs         # presence of background jobs
-      virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)
-      anaconda                # conda environment (https://conda.io/)
-      pyenv                   # python environment (https://github.com/pyenv/pyenv)
-      nodenv                  # node.js version from nodenv (https://github.com/nodenv/nodenv)
-      rbenv                   # ruby version from rbenv (https://github.com/rbenv/rbenv)
-      context                 # user@host
-      time                    # current time
-      # =========================[ Line #2 ]=========================
-      newline
-  )
 }
-# Source theme before loading powerlevel10k
-source ~/.p10k.zsh
-zplugin ice lucid atinit"_config_powerline"; zplugin light romkatv/powerlevel10k
-zplugin ice blockf; zplugin light zsh-users/zsh-completions
-zplugin ice lucid wait atload'_zsh_autosuggest_start'; zplugin light zsh-users/zsh-autosuggestions
 
+zplugin ice lucid wait'!' atload'source ~/.p10k.zsh; _vdbk_p10k_theme; _p9k_precmd' nocd; zplugin light romkatv/powerlevel10k
+zplugin ice pick'init.zsh' compile'*.zsh'; zplugin light laggardkernel/zsh-iterm2
+
+zplugin ice atclone"gdircolors -b LS_COLORS > clrs.zsh" \
+    atpull'%atclone' pick"clrs.zsh" nocompile'!' \
+    atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'
+zplugin light trapd00r/LS_COLORS
+
+# Keep these in this order
+zplugin ice wait blockf lucid; zplugin light zsh-users/zsh-completions; 
+zplugin ice wait atload"_zsh_autosuggest_start" lucid nocd; zplugin light zsh-users/zsh-autosuggestions
+zplugin ice wait atinit"zpcompinit; zpcdreplay" lucid nocd; zplugin light zdharma/fast-syntax-highlighting

@@ -29,6 +29,9 @@ scheduledTasks() {
   launchctl load $HOME/Library/LaunchAgents/com.lewisjmorgan.weekly.plist
 }
 
+setup_motd() {
+  sudo ln -s $HOME/.yadm/motd /etc/motd
+}
 # Python3 as default python
 ln -s $(brew --prefix)/opt/python/libexec/bin ~/.pyenv/versions/3-brew
 # Symlink vscode settings
