@@ -8,10 +8,10 @@ VERSION_RUBY=2.6.5
 
 install_packages() {
   echo "Installing global yarn packages 🧶"
-  cat $HOME/.yadm/yarn.txt | xargs -L 1 yarn global add
+  cat $HOME/.yadm/packages/yarn.txt | xargs -L 1 yarn global add
 
   echo "Installing vscode packages ⚙️"
-  cat $HOME/.yadm/vscode.txt | xargs -L 1 code --install-extension
+  cat $HOME/.yadm/packages/vscode.txt | xargs -L 1 code --install-extension
 }
 
 setup_node() {

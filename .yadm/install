@@ -6,11 +6,7 @@
 
 system_type=$(uname -s)
 
-mac_bin_install() {
-  for file in $HOME/.yadm/mac/bin/*; do
-    ln -s ${file} $HOME/bin/${file##*/}
-  done
-
+mac_pre_bootstrap() {
   # Dev tools required for Homebrew
   xcode-select --install
   
@@ -27,19 +23,20 @@ linux_install() {
   # Setup of packages is done during bootstrap
 }
 
-mac_bin_install
+mac_pre_bootstrap
+
+# Clone the dotfiles repository to setup everything else
+yadm clone https://github.com/lewismorgan/dotfiles.git --no-bootstrap
 
 # Create a bin folder for user scripts
 if [ ! -d "$HOME/bin" ]; then
   mkdir $HOME/bin
 fi
 
-for file in $HOME/.yadm/all/bin/*; do
+for file in $HOME/.yadm/mac/bin/*; do
   ln -s ${file} $HOME/bin/${file##*/}
 done
 
-# Clone the dotfiles repository to setup everything else
-yadm clone https://github.com/lewismorgan/dotfiles.git --no-bootstrap
 yadm bootstrap
 
 # Change the shell to ZSH --- Keep this as the last line otherwise nothing will run after.

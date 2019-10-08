@@ -7,7 +7,7 @@ system_type=$(uname -s)
 if [ "$system_type" = "Darwin" ]; then
   ln -s "$HOME/.yadm/Brewfile" "$HOME/Brewfile"
   brew bundle --file=$HOME/Brewfile
-  $HOME/.yadm/mac_setup
+  $HOME/.yadm/mac/setup
 fi
 
 # if [ "$OSTYPE" = linux-gnu ]; then
