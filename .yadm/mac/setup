@@ -7,8 +7,6 @@ writeDefaults() {
   # Show hidden files on the system in finder (requires a restart once written. Cmd + Shift + . to display hidden files in open dialogs)
   defaults write com.apple.finder AppleShowAllFiles YES
 
-  # iTerm2
-
   # Specify the preferences directory
   defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/iterm2"
   # Use the custom preferences in the directory
@@ -33,7 +31,7 @@ setup_motd() {
   sudo ln -s $HOME/.yadm/motd /etc/motd
 }
 # Python3 as default python
-ln -s $(brew --prefix)/opt/python/libexec/bin ~/.pyenv/versions/3-brew
+#ln -s $(brew --prefix)/opt/python/libexec/bin ~/.pyenv/versions/3-brew
 # Symlink vscode settings
 ln -s "$HOME/.vscode/settings.json" "$HOME/Library/Application Support/Code/User/settings.json"
 

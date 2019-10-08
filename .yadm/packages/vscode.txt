@@ -18,6 +18,7 @@ infeng.vscode-react-typescript
 IronLu233.vscode-color-exchange
 Janne252.fontawesome-autocomplete
 kamikillerto.vscode-colorize
+mariomatheu.syntax-project-pbxproj
 mariusschulz.yarn-lock-syntax
 mgmcdermott.vscode-language-babel
 ms-azuretools.vscode-docker

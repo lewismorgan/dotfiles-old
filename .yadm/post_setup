@@ -3,8 +3,8 @@
 # Stuff thats not system dependent, used after system setup
 
 # Most of the time these are already installed system wide
-VERSION_NODE=12.7.0
-VERSION_RUBY=2.6.3
+VERSION_NODE=12.11.1
+VERSION_RUBY=2.6.5
 
 install_packages() {
   echo "Installing global yarn packages 🧶"
@@ -15,7 +15,7 @@ install_packages() {
 }
 
 setup_node() {
-  nodenv install $VERSION_NODE
+  #nodenv install $VERSION_NODE
 
   # System installed version should always be the homebrew version
   nodenv global system
@@ -44,9 +44,8 @@ setup_jenv() {
 
 # ZSH Setup
 setup_zsh() {
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
-  
-
+  mkdir ~/.zplugin
+  git clone https://github.com/zdharma/zplugin.git ~/.zplugin/bin
 }
 
 cp "$HOME/.yadm/.env" "$HOME/.env"
