@@ -1,6 +1,6 @@
 {
     "editor.fontLigatures": true,
-    "editor.fontFamily": "FuraCode Nerd Font",
+    "editor.fontFamily": "'Cascadia Code', 'FuraCode Nerd Font'",
     "editor.tabSize": 2,
     "emojisense.languages": {
         "markdown": true,
@@ -9,5 +9,6 @@
     },
     "python.jediEnabled": false,
     "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "workbench.colorTheme": "Dracula"
 }

@@ -3,7 +3,6 @@
 export PATH=$HOME/bin:$PATH
 
 # Environment
-source $HOME/.env
 source $HOME/bin/init-env
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 export ITERM2_SQUELCH_MARK=1
@@ -54,6 +53,9 @@ _vdbk_p10k_theme() {
 zplugin ice lucid wait'!' atload'source ~/.p10k.zsh; _vdbk_p10k_theme; _p9k_precmd' nocd; zplugin light romkatv/powerlevel10k
 zplugin ice pick'init.zsh' compile'*.zsh'; zplugin light laggardkernel/zsh-iterm2
 
+# OMZ Plugins
+zplugin ice wait lucid; zplugin snippet OMZ::plugins/dotenv/dotenv.plugin.zsh
+
 zplugin ice atclone"gdircolors -b LS_COLORS > clrs.zsh" \
     atpull'%atclone' pick"clrs.zsh" nocompile'!' \
     atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'
@@ -61,5 +63,5 @@ zplugin light trapd00r/LS_COLORS
 
 # Keep these in this order
 zplugin ice wait blockf lucid; zplugin light zsh-users/zsh-completions; 
-zplugin ice wait atload"_zsh_autosuggest_start" lucid nocd; zplugin light zsh-users/zsh-autosuggestions
+#zplugin ice wait atload"_zsh_autosuggest_start" lucid nocd; zplugin light zsh-users/zsh-autosuggestions
 zplugin ice wait atinit"zpcompinit; zpcdreplay" lucid nocd; zplugin light zdharma/fast-syntax-highlighting
