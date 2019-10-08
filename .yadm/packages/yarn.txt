@@ -1,7 +1,2 @@
-pure-prompt
-gulp-cli
 serve
 syncyarnlock
-react-native-cli
-ignite-cli
-fakeit
