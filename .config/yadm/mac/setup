@@ -20,16 +20,13 @@ scheduledTasks() {
     mkdir $HOME/Library/LaunchAgents
   fi
 
-  ln -s $HOME/.launchd/com.lewisjmorgan.daily.plist $HOME/Library/LaunchAgents
-  ln -s $HOME/.launchd/com.lewisjmorgan.weekly.plist $HOME/Library/LaunchAgents
+  ln -s $HOME/.config/.launchd/com.lewisjmorgan.daily.plist $HOME/Library/LaunchAgents
+  ln -s $HOME/.config/.launchd/com.lewisjmorgan.weekly.plist $HOME/Library/LaunchAgents
   
   launchctl load $HOME/Library/LaunchAgents/com.lewisjmorgan.daily.plist
   launchctl load $HOME/Library/LaunchAgents/com.lewisjmorgan.weekly.plist
 }
 
-setup_motd() {
-  sudo ln -s $HOME/.yadm/motd /etc/motd
-}
 # Python3 as default python
 #ln -s $(brew --prefix)/opt/python/libexec/bin ~/.pyenv/versions/3-brew
 # Symlink vscode settings

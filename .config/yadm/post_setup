@@ -2,9 +2,9 @@
 
 # Stuff thats not system dependent, used after system setup
 
-# Most of the time these are already installed system wide
-VERSION_NODE=12.11.1
-VERSION_RUBY=2.6.5
+# Latest LTS Versions
+VERSION_NODE=12.14.1
+VERSION_RUBY=2.7.0
 
 install_packages() {
   echo "Installing global yarn packages 🧶"
@@ -26,18 +26,14 @@ setup_ruby() {
   git clone https://github.com/rbenv/rbenv-default-gems.git $(rbenv root)/plugins/rbenv-default-gems
 
   rbenv install $VERSION_RUBY
-  rbenv global $VERSION_RUBY
-  
-  # TODO: Pick default_gems based on system
-  git clone https://github.com/rbenv/rbenv-default-gems.git $(rbenv root)/plugins/rbenv-default-gems
-  cp $HOME/.yadm/mac/default_gems $HOME/.rbenv/default_gems
+  rbenv global system
 }
 
 # Java Environments to setup
 setup_jenv() {
   jenv enable-plugin export
   # Add all java environments using custom jadd script
-  jadd
+  #jadd
   # Use system as the global
   jenv global system
 }
@@ -48,7 +44,6 @@ setup_zsh() {
   git clone https://github.com/zdharma/zplugin.git ~/.zplugin/bin
 }
 
-cp "$HOME/.yadm/.env" "$HOME/.env"
 setup_ruby
 install_packages
 setup_jenv

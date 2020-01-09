@@ -16,26 +16,10 @@ mac_pre_bootstrap() {
   # Setup of packages is done during bootstrap
 }
 
-linux_install() {
-  for file in $HOME/.yadm/linux/bin/*; do
-    ln -s $HOME/bin/${file##*/} ${file}
-  done
-  # Setup of packages is done during bootstrap
-}
-
 mac_pre_bootstrap
 
 # Clone the dotfiles repository to setup everything else
 yadm clone https://github.com/lewismorgan/dotfiles.git --no-bootstrap
-
-# Create a bin folder for user scripts
-if [ ! -d "$HOME/bin" ]; then
-  mkdir $HOME/bin
-fi
-
-for file in $HOME/.yadm/mac/bin/*; do
-  ln -s ${file} $HOME/bin/${file##*/}
-done
 
 yadm bootstrap
 

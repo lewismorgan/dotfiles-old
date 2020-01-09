@@ -5,7 +5,7 @@
   <key>Label</key>
   <string>com.lewisjmorgan.weekly</string>
   <key>Program</key>
-  <string>/Users/lewismorgan/.launchd/weekly.sh</string>
+  <string>/Users/lewismorgan/.config/.launchd/weekly.sh</string>
 
   <key>StartCalendarInterval</key>
   <dict>

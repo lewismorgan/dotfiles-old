@@ -1,39 +1,39 @@
-2gua.rainbow-brackets
-Agenric.cocoapods-snippets
-alexnesnes.makeRunner
-bierner.emojisense
-bungcip.better-toml
-burkeholland.simple-react-snippets
-DotJoshJohnson.xml
-dracula-theme.theme-dracula
-dustinsanders.an-old-hope-theme-vscode
-eamodio.gitlens
-fivethree.vscode-fastlane-snippets
-foxundermoon.shell-format
-fwcd.kotlin
-gamunu.vscode-yarn
-glen-84.sass-lint
-golf1052.base16-generator
-infeng.vscode-react-typescript
-IronLu233.vscode-color-exchange
-Janne252.fontawesome-autocomplete
-kamikillerto.vscode-colorize
-mariomatheu.syntax-project-pbxproj
-mariusschulz.yarn-lock-syntax
-mgmcdermott.vscode-language-babel
-ms-azuretools.vscode-docker
-ms-python.python
-ms-vscode.Theme-TomorrowKit
-msjsdiag.vscode-react-native
-Orta.vscode-ios-common-files
-Orta.vscode-react-native-storybooks
-PBeast.lanes-navigator
-rebornix.ruby
-ritwickdey.live-sass
-ritwickdey.LiveServer
-robinbentley.sass-indented
-rpinski.shebang-snippets
-VisualStudioExptTeam.vscodeintellicode
-vknabel.vscode-swift-development-environment
-wayou.vscode-todo-highlight
-zhouronghui.propertylist
+code --install-extension 2gua.rainbow-brackets
+code --install-extension Agenric.cocoapods-snippets
+code --install-extension alexnesnes.makeRunner
+code --install-extension bierner.emojisense
+code --install-extension bungcip.better-toml
+code --install-extension burkeholland.simple-react-snippets
+code --install-extension DotJoshJohnson.xml
+code --install-extension dracula-theme.theme-dracula
+code --install-extension dustinsanders.an-old-hope-theme-vscode
+code --install-extension eamodio.gitlens
+code --install-extension fivethree.vscode-fastlane-snippets
+code --install-extension foxundermoon.shell-format
+code --install-extension fwcd.kotlin
+code --install-extension gamunu.vscode-yarn
+code --install-extension glen-84.sass-lint
+code --install-extension golf1052.base16-generator
+code --install-extension infeng.vscode-react-typescript
+code --install-extension Janne252.fontawesome-autocomplete
+code --install-extension kamikillerto.vscode-colorize
+code --install-extension Kasik96.swift
+code --install-extension mariomatheu.syntax-project-pbxproj
+code --install-extension mariusschulz.yarn-lock-syntax
+code --install-extension mgmcdermott.vscode-language-babel
+code --install-extension ms-azuretools.vscode-docker
+code --install-extension ms-python.python
+code --install-extension ms-vscode.Theme-TomorrowKit
+code --install-extension msjsdiag.vscode-react-native
+code --install-extension Orta.vscode-ios-common-files
+code --install-extension Orta.vscode-react-native-storybooks
+code --install-extension PBeast.lanes-navigator
+code --install-extension rebornix.ruby
+code --install-extension ritwickdey.live-sass
+code --install-extension ritwickdey.LiveServer
+code --install-extension rpinski.shebang-snippets
+code --install-extension VisualStudioExptTeam.vscodeintellicode
+code --install-extension vknabel.vscode-swift-development-environment
+code --install-extension wayou.vscode-todo-highlight
+code --install-extension wingrunr21.vscode-ruby
+code --install-extension zhouronghui.propertylist
