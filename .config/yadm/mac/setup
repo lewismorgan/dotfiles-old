@@ -29,6 +29,7 @@ scheduledTasks() {
 
 # Python3 as default python
 #ln -s $(brew --prefix)/opt/python/libexec/bin ~/.pyenv/versions/3-brew
+
 # Symlink vscode settings
 ln -s "$HOME/.vscode/settings.json" "$HOME/Library/Application Support/Code/User/settings.json"
 

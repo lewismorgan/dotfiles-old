@@ -13,6 +13,7 @@ mac_pre_bootstrap() {
   # Homebrew
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   brew install yadm
+  brew bundle --file=$HOME/Brewfile
   # Setup of packages is done during bootstrap
 }
 

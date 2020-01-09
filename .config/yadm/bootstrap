@@ -6,10 +6,9 @@ yadm_path="$HOME/.config/yadm"
 system_type=$(uname -s)
 
 if [ "$system_type" = "Darwin" ]; then
-  ln -s "$yadm_path/Brewfile" "$HOME/Brewfile"
-  brew bundle --file=$HOME/Brewfile
   $yadm_path/mac/setup
-  $yadm_path/post_setup
 fi
+
+$yadm_path/post_setup
 
 echo "Finished bootstrapping the system! 👍"
