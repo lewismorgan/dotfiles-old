@@ -13,7 +13,6 @@ mac_pre_bootstrap() {
   # Homebrew
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   brew install yadm
-  brew bundle --file=$HOME/Brewfile
   # Setup of packages is done during bootstrap
 }
 
@@ -21,7 +20,7 @@ mac_pre_bootstrap
 
 # Clone the dotfiles repository to setup everything else
 yadm clone https://github.com/lewismorgan/dotfiles.git --no-bootstrap
-
+brew bundle --file=$HOME/Brewfile
 yadm bootstrap
 
 # Change the shell to ZSH --- Keep this as the last line otherwise nothing will run after.
