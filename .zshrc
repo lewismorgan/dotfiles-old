@@ -4,7 +4,6 @@ export PATH=$HOME/bin:$PATH
 
 # Environment
 source $HOME/bin/init-env
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 export ITERM2_SQUELCH_MARK=1
 
 ### GPG Keys ###
@@ -24,11 +23,11 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 # JEnv
-eval "$(jenv init -)"
-export JAVA_HOME="$HOME/.jenv/versions/`jenv version-name`"
-alias jenv_set_java_home='export JAVA_HOME="$HOME/.jenv/versions/`jenv version-name`"'
-
-### !!! Keep these at the end !!! ###
+if which jenv > /dev/null; then
+  eval "$(jenv init -)"
+  export JAVA_HOME="$HOME/.jenv/versions/`jenv version-name`"
+  alias jenv_set_java_home='export JAVA_HOME="$HOME/.jenv/versions/`jenv version-name`"'
+fi
 
 ### Added by Zplugin's installer
 if type brew &>/dev/null; then
@@ -39,6 +38,7 @@ autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 ### End of Zplugin installer's chunk
 
+# Theme function called by zplugin loader when loading p10k
 _vdbk_p10k_theme() {
   POWERLEVEL9K_PROMPT_CHAR_OK_VIINS_CONTENT_EXPANSION=$'\uf101'
   POWERLEVEL9K_PROMPT_CHAR_ERROR_VIINS_CONTENT_EXPANSION=$'\uf101'
@@ -50,11 +50,16 @@ _vdbk_p10k_theme() {
   POWERLEVEL9K_RBENV_PROMPT_ALWAYS_SHOW=true
 }
 
+# ZPlugin Plugins --- Keep all of these last!
+
 zplugin ice lucid wait'!' atload'source ~/.p10k.zsh; _vdbk_p10k_theme; _p9k_precmd' nocd; zplugin light romkatv/powerlevel10k
 zplugin ice pick'init.zsh' compile'*.zsh'; zplugin light laggardkernel/zsh-iterm2
 
 # OMZ Plugins
 zplugin ice wait lucid; zplugin snippet OMZ::plugins/dotenv/dotenv.plugin.zsh
+zplugin ice wait lucid; zplugin snippet OMZ::plugins/git-extras/git-extras.plugin.zsh
+zplugin ice wait lucid; zplugin snippet OMZ::plugins/git-hubflow/git-hubflow.plugin.zsh
+zplugin ice wait lucid; zplugin snippet OMZ::plugins/xcode/xcode.plugin.zsh
 
 zplugin ice atclone"gdircolors -b LS_COLORS > clrs.zsh" \
     atpull'%atclone' pick"clrs.zsh" nocompile'!' \
@@ -63,5 +68,8 @@ zplugin light trapd00r/LS_COLORS
 
 # Keep these in this order
 zplugin ice wait blockf lucid; zplugin light zsh-users/zsh-completions; 
-#zplugin ice wait atload"_zsh_autosuggest_start" lucid nocd; zplugin light zsh-users/zsh-autosuggestions
+zplugin ice wait atload"_zsh_autosuggest_start" lucid nocd; zplugin light zsh-users/zsh-autosuggestions
 zplugin ice wait atinit"zpcompinit; zpcdreplay" lucid nocd; zplugin light zdharma/fast-syntax-highlighting
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_USE_ASYNC=1
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20

@@ -9,7 +9,7 @@ export NODE_BUILD_DEFINITIONS="$(brew --prefix node-build-update-defs)/share/nod
 export EDITOR="'/Applications/Visual Studio Code.app/Contents/MacOS/Electron' -w"
 
 # Aliases #
-alias xcode="open -a Xcode"
-alias kraken="open -a 'GitKraken' --args -p $(pwd)"
+alias xcode="open -a Xcode-beta"
+alias kraken="open -a 'GitKraken'"
 alias brew='env PATH=${PATH//$(pyenv root)\/shims:/} brew'
 alias ls='gls -F --color'
