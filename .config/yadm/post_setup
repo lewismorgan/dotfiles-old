@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 # Stuff thats not system dependent, used after system setup
 
@@ -15,7 +15,7 @@ install_packages() {
 }
 
 setup_node() {
-  #nodenv install $VERSION_NODE
+  nodenv install $VERSION_NODE
 
   # System installed version should always be the homebrew version
   nodenv global system

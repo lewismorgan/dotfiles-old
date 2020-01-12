@@ -1,10 +1,8 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 # Wrapper script to install everything through YADM
 # Installs custom binaries onto the system and then bootstraps packages through YADM.
 # Created by Lewis Morgan
-
-system_type=$(uname -s)
 
 mac_pre_bootstrap() {
   # Dev tools required for Homebrew
@@ -20,8 +18,5 @@ mac_pre_bootstrap
 
 # Clone the dotfiles repository to setup everything else
 yadm clone https://github.com/lewismorgan/dotfiles.git --no-bootstrap
-brew bundle --file=$HOME/Brewfile
+brew bundle
 yadm bootstrap
-
-# Change the shell to ZSH --- Keep this as the last line otherwise nothing will run after.
-chsh -s $(grep /zsh$ /etc/shells | tail -1)

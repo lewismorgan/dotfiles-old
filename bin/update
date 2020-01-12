@@ -3,7 +3,7 @@
 echo "Updating system"
 
 # Update homebrew
-brew update
+brew upgrade
 
 # Update yarn-installed binaries
 yarn global upgrade
@@ -11,5 +11,8 @@ yarn global upgrade
 # Update Mac cleanup
 curl -fsSL "https://raw.githubusercontent.com/fwartner/mac-cleanup/master/installer.sh" | bash -s update
 
-# Update oh-my-zsh
-upgrade_oh_my_zsh
+# Update list of packages
+dump-vsext
+
+# Update java installs
+jadd

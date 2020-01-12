@@ -43,9 +43,8 @@ PerformDailyUpdates()
 PerformDailyHomebrewUpdates()
 {
 	# Update Homebrew
-	brew update
 	brew upgrade
 }
 
 PerformDailyUpdates
-echo 'Finished daily update tasks' | terminal-notifier -title 'Updated' -subtitle 'Daily' -execute 'code ~/.launchd' -sound default
+echo 'Finished daily update tasks' | terminal-notifier -title 'Updated' -subtitle 'Daily'

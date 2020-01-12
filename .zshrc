@@ -51,7 +51,6 @@ _vdbk_p10k_theme() {
 }
 
 # ZPlugin Plugins --- Keep all of these last!
-
 zplugin ice lucid wait'!' atload'source ~/.p10k.zsh; _vdbk_p10k_theme; _p9k_precmd' nocd; zplugin light romkatv/powerlevel10k
 zplugin ice pick'init.zsh' compile'*.zsh'; zplugin light laggardkernel/zsh-iterm2
 
@@ -60,11 +59,19 @@ zplugin ice wait lucid; zplugin snippet OMZ::plugins/dotenv/dotenv.plugin.zsh
 zplugin ice wait lucid; zplugin snippet OMZ::plugins/git-extras/git-extras.plugin.zsh
 zplugin ice wait lucid; zplugin snippet OMZ::plugins/git-hubflow/git-hubflow.plugin.zsh
 zplugin ice wait lucid; zplugin snippet OMZ::plugins/xcode/xcode.plugin.zsh
+###
+
+# LS_COLORS
 
 zplugin ice atclone"gdircolors -b LS_COLORS > clrs.zsh" \
     atpull'%atclone' pick"clrs.zsh" nocompile'!' \
     atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'
 zplugin light trapd00r/LS_COLORS
+
+# direnv
+zplugin ice as"program" make'!' atclone'./direnv hook zsh > zhook.zsh' \
+    atpull'%atclone' pick"direnv" src"zhook.zsh"
+zplugin light direnv/direnv
 
 # Keep these in this order
 zplugin ice wait blockf lucid; zplugin light zsh-users/zsh-completions; 

@@ -1,0 +1,93 @@
+
+# Functions
+prompt_npmnode() {
+  local color='%F{white}'
+  if [ -f ./package.json ] || [ -f ../package.json ] || [ -f ../../package.json ]; then
+    local node_prompt
+    if type npm >/dev/null 2>&1; then
+      node_prompt=$(npm --version)
+      [[ "${node_prompt}x" == "x" ]] && return
+    elif type node >/dev/null 2>&1; then
+      node_prompt="$(node --version)"
+    else
+      return
+    fi
+    node_prompt=${node_prompt}
+    echo "\uE71E $node_prompt"
+  fi
+}
+
+prompt_jenv() {
+  if [ -f ./.java-version ] || [ -f ../.java-version ] || [ -f ../../.java-version ]; then
+    if command -v java > /dev/null 2>&1; then
+      local jversion=$(java -version 2>&1 | grep -i version | cut -d'"' -f2 | cut -d'.' -f1-2)
+      echo "\uE256 $jversion"
+    fi
+  fi
+}
+
+prompt_spotify() {
+  if pgrep -x "Spotify" > /dev/null 2>&1; then
+    state=`osascript -e 'tell application "Spotify" to player state as string'`;
+    if [ $state = "playing" ]; then
+      track=`osascript -e 'tell application "Spotify" to name of current track as string'`;
+
+      echo "\uf1bc ${track:0:10}"
+    fi
+  fi
+}
+
+# Custom Segments
+POWERLEVEL9K_CUSTOM_SPOTIFY='prompt_spotify'
+POWERLEVEL9K_CUSTOM_SPOTIFY_BACKGROUND='green'
+POWERLEVEL9K_CUSTOM_SPOTIFY_FOREGROUND='black'
+
+POWERLEVEL9K_CUSTOM_JENV='prompt_jenv'
+POWERLEVEL9K_CUSTOM_JENV_BACKGROUND='white'
+POWERLEVEL9K_CUSTOM_JENV_FOREGROUND='black'
+
+POWERLEVEL9K_CUSTOM_NPM='prompt_npmnode'
+POWERLEVEL9K_CUSTOM_NPM_BACKGROUND='124'
+POWERLEVEL9K_CUSTOM_NPM_FOREGROUND='white'
+
+# vcs
+POWERLEVEL9K_SHOW_CHANGESET=true
+POWERLEVEL9K_CHANGESET_HASH_LENGTH=6
+
+POWERLEVEL9K_VCS_CLEAN_BACKGROUND='none'
+POWERLEVEL9K_VCS_CLEAN_FOREGROUND='076'
+POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='none'
+POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='005'
+POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='none'
+POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='003'
+
+POWERLEVEL9K_VCS_GIT_HOOKS=(vcs-detect-changes git-untracked git-aheadbehind git-remotebranch git-tagname)
+
+# Icons
+
+# Customizations
+
+POWERLEVEL9K_MODE='nerdfont-complete'
+
+POWERLEVEL9K_STATUS_OK_BACKGROUND='black'
+
+POWERLEVEL9K_DIR_HOME_BACKGROUND="black"
+POWERLEVEL9K_DIR_HOME_FOREGROUND="blue"
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="black"
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="blue"
+POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="black"
+POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="blue"
+
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%F{blue}╭"
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%F{blue}╰%F{blue}\uF460\uF460\uF460%f "
+
+# Left
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=('context' 'dir' 'rbenv' 'pyenv' 'custom_jenv' 'custom_npm' 'custom_spotify' 'background_jobs')
+POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\uE0B4'
+
+# Right
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=('vcs')
+POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=''
+POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR=' '
+POWERLEVEL9K_WHITESPACE_BETWEEN_RIGHT_SEGMENTS=''
