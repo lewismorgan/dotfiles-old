@@ -2,8 +2,7 @@
 
 # Stuff thats not system dependent, used after system setup
 
-# Latest LTS Versions
-VERSION_NODE=12.14.1
+VERSION_NODE=13.6.0
 VERSION_RUBY=2.7.0
 
 install_packages() {
@@ -17,8 +16,11 @@ install_packages() {
 setup_node() {
   nodenv install $VERSION_NODE
 
-  # System installed version should always be the homebrew version
-  nodenv global system
+  # Link to Homebrew version
+  ln -s /usr/local/opt/node ~/.nodenv/versions/brew
+
+  # Use the homebrew version
+  nodenv global brew
 }
 
 setup_ruby() {
@@ -26,7 +28,12 @@ setup_ruby() {
   git clone https://github.com/rbenv/rbenv-default-gems.git $(rbenv root)/plugins/rbenv-default-gems
 
   rbenv install $VERSION_RUBY
-  rbenv global system
+
+  # Link to Homebrew version
+  ln -s /usr/local/opt/ruby ~/.rbenv/versions/brew
+
+  # Use the Homebrew version
+  rbenv global brew
 }
 
 # Java Environments to setup
