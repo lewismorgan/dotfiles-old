@@ -33,17 +33,11 @@ PerformDailyUpdates()
 	DATE=$(date +%d-%m-%Y" "%H:%M:%S )
 
 	echo ""
-	echo "| 🕥 $DATE | Performing daily Homebrew update 🍺."
+	echo "| 🕥 $DATE | Performing daily updates."
 
-	PerformDailyHomebrewUpdates
+	update
 	
 	echo "||||| Finished running daily script ☑️ |||||"
-}
-
-PerformDailyHomebrewUpdates()
-{
-	# Update Homebrew
-	brew upgrade
 }
 
 PerformDailyUpdates

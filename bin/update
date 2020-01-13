@@ -5,14 +5,20 @@ echo "Updating system"
 # Update homebrew
 brew upgrade
 
-# Update yarn-installed binaries
+# Update RubyGems
+gem update -N --system
+# Update outdated gems
+gem update -N
+# Install default gems
+cat $(rbenv root)/default_gems | xargs -L 1 gem install -N
+
+# Update global yarn installed binaries
 yarn global upgrade
 
 # Update Mac cleanup
-curl -fsSL "https://raw.githubusercontent.com/fwartner/mac-cleanup/master/installer.sh" | bash -s update
+#curl -fsSL "https://raw.githubusercontent.com/fwartner/mac-cleanup/master/installer.sh" | bash -s update
 
 # Update list of packages
 dump-vsext
 
-# Update java installs
-jadd
+echo "Finished updating system"

@@ -5,13 +5,9 @@ DATE=$(date +%d-%m-%Y" "%H:%M:%S )
 echo ""
 echo "🕥 $DATE | Performing weekly tasks 🍺."
 
-# Clean the system
+update
 clean
 
-# Update the system
-update
+echo 'Finished running weekly maint. tasks' | terminal-notifier -title 'Weekly Script'
 
-# Remove daily log file
-rm -f ~/daily.log
-
-echo 'Finished weekly update tasks' | terminal-notifier -title 'Updated' -subtitle 'Weekly' -execute 'code ~/.launchd' -sound default
+echo "*** Finished. ***"

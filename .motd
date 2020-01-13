@@ -1,3 +1,3 @@
-hostname -s | xargs ~/.rbenv/shims/artii -f starwars | fmt -c -w $COLUMNS | /usr/local/bin/lolcat -p 6.0
+hostname -s | /usr/local/bin/figlet -cf starwars | /usr/local/bin/lolcat -p 6.0
 echo "/*********** MacOS $(sw_vers -productVersion) ***********\\" | fmt -c -w $COLUMNS | /usr/local/bin/lolcat -p 6.0
 /usr/local/bin/fortune -a -s | /usr/local/bin/cowsay -f vader | /usr/local/bin/lolcat -p 6.0

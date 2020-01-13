@@ -39,19 +39,17 @@ autoload -Uz _zplugin
 ### End of Zplugin installer's chunk
 
 # Theme function called by zplugin loader when loading p10k
-_vdbk_p10k_theme() {
+_imperial_p10k_theme() {
   POWERLEVEL9K_PROMPT_CHAR_OK_VIINS_CONTENT_EXPANSION=$'\uf101'
   POWERLEVEL9K_PROMPT_CHAR_ERROR_VIINS_CONTENT_EXPANSION=$'\uf101'
-  POWERLEVEL9K_VCS_GIT_GITHUB_ICON=
   POWERLEVEL9K_APPLE_ICON=$'\uf1d1 '
   # Etc
   POWERLEVEL9K_DIR_HOME_BACKGROUND="clear"
   POWERLEVEL9K_DIR_HOME_FOREGROUND="blue"
-  POWERLEVEL9K_RBENV_PROMPT_ALWAYS_SHOW=true
 }
 
 # ZPlugin Plugins --- Keep all of these last!
-zplugin ice lucid wait'!' atload'source ~/.p10k.zsh; _vdbk_p10k_theme; _p9k_precmd' nocd; zplugin light romkatv/powerlevel10k
+zplugin ice lucid wait'!' atload'source ~/.p10k.zsh; _imperial_p10k_theme; _p9k_precmd' nocd; zplugin light romkatv/powerlevel10k
 zplugin ice pick'init.zsh' compile'*.zsh'; zplugin light laggardkernel/zsh-iterm2
 
 # OMZ Plugins
