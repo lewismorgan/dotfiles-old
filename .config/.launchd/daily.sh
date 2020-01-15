@@ -1,5 +1,5 @@
-#!/bin/bash
-PATH=/usr/local/bin:${PATH}
+#!/usr/bin/env bash
+PATH=${HOME}/bin:/usr/local/bin:${PATH}
 
 ##
 # Determine if the network is up by looking for any non-loopback
