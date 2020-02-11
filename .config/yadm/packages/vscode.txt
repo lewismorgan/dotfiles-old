@@ -33,7 +33,6 @@ ritwickdey.live-sass
 ritwickdey.LiveServer
 rpinski.shebang-snippets
 VisualStudioExptTeam.vscodeintellicode
-vknabel.vscode-swift-development-environment
 wayou.vscode-todo-highlight
 wingrunr21.vscode-ruby
 zhouronghui.propertylist

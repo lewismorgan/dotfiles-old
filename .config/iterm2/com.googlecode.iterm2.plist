@@ -4,6 +4,8 @@
 <dict>
 	<key>AppleAntiAliasingThreshold</key>
 	<integer>1</integer>
+	<key>ApplePressAndHoldEnabled</key>
+	<false/>
 	<key>AppleScrollAnimationEnabled</key>
 	<integer>0</integer>
 	<key>AppleSmoothFixedFontsSizeThreshold</key>
@@ -1218,9 +1220,9 @@
 	<key>NSNavLastRootDirectory</key>
 	<string>~</string>
 	<key>NSNavLastUserSetHideExtensionButtonState</key>
-	<false/>
+	<true/>
 	<key>NSNavPanelExpandedSizeForSaveMode</key>
-	<string>{712, 448}</string>
+	<string>{841, 448}</string>
 	<key>NSNavPanelExpandedStateForSaveMode</key>
 	<true/>
 	<key>NSQuotedKeystrokeBinding</key>
@@ -1264,14 +1266,12 @@
 		<key>TB Is Shown</key>
 		<integer>1</integer>
 	</dict>
-	<key>NSWindow Frame NSColorPanel</key>
-	<string>0 163 224 275 0 0 1920 1057 </string>
 	<key>NSWindow Frame NSNavPanelAutosaveName</key>
-	<string>539 388 841 470 0 0 1920 1057 </string>
-	<key>NSWindow Frame ProfilesPanel</key>
-	<string>160 649 735 382 0 0 1920 1057 </string>
+	<string>219 230 841 470 0 0 1280 777 </string>
+	<key>NSWindow Frame SUUpdateAlert</key>
+	<string>330 288 620 392 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>86 150 1722 882 0 0 1920 1080 </string>
+	<string>97 132 1130 542 0 0 1280 777 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -3397,33 +3397,42 @@
 	</array>
 	<key>NoSyncAllAppVersions</key>
 	<array>
+		<string>3.3.5</string>
+		<string>3.3.8</string>
 		<string>3.3.7</string>
+		<string>3.3.6</string>
 	</array>
 	<key>NoSyncCommandHistoryHasEverBeenUsed</key>
 	<true/>
+	<key>NoSyncDoNotWarnBeforeMultilinePaste</key>
+	<true/>
+	<key>NoSyncDoNotWarnBeforeMultilinePaste_selection</key>
+	<integer>0</integer>
+	<key>NoSyncDoNotWarnBeforePastingOneLineEndingInNewlineAtShellPrompt</key>
+	<true/>
+	<key>NoSyncDoNotWarnBeforePastingOneLineEndingInNewlineAtShellPrompt_selection</key>
+	<integer>1</integer>
 	<key>NoSyncFrame_SharedPreferences</key>
 	<dict>
 		<key>screenFrame</key>
-		<string>{{0, 0}, {1920, 1080}}</string>
+		<string>{{0, 0}, {1280, 800}}</string>
 		<key>topLeft</key>
-		<string>{583, 870}</string>
+		<string>{191, 704}</string>
 	</dict>
 	<key>NoSyncInstallationId</key>
-	<string>9715AD25-E42C-4149-A1A3-9961442E07DC</string>
-	<key>NoSyncLastTipTime</key>
-	<real>600920245.61394095</real>
+	<string>F6F8408E-306D-45E9-9C2F-254A57B98BEA</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>5</integer>
+	<integer>47</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
-	<integer>0</integer>
+	<integer>1</integer>
 	<key>NoSyncNextAnnoyanceTime</key>
-	<real>600729010.51401997</real>
+	<real>592855768.90524101</real>
 	<key>NoSyncOnboardingWindowHasBeenShown</key>
 	<true/>
 	<key>NoSyncPermissionToShowTip</key>
-	<true/>
+	<false/>
 	<key>NoSyncRecordedVariables</key>
 	<dict>
 		<key>0</key>
@@ -3774,23 +3783,7 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentTab.currentSession.terminalWindowName</string>
-				<key>nonterminalContext</key>
-				<integer>0</integer>
-			</dict>
-			<dict>
-				<key>isTerminal</key>
-				<true/>
-				<key>name</key>
 				<string>currentTab.currentSession.lastCommand</string>
-				<key>nonterminalContext</key>
-				<integer>0</integer>
-			</dict>
-			<dict>
-				<key>isTerminal</key>
-				<true/>
-				<key>name</key>
-				<string>currentTab.currentSession.terminalIconName</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -3854,7 +3847,7 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentTab.currentSession.commandLine</string>
+				<string>currentTab.currentSession.path</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -3862,7 +3855,7 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentTab.currentSession.path</string>
+				<string>currentTab.currentSession.commandLine</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -3921,14 +3914,6 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentSession.terminalWindowName</string>
-				<key>nonterminalContext</key>
-				<integer>0</integer>
-			</dict>
-			<dict>
-				<key>isTerminal</key>
-				<true/>
-				<key>name</key>
 				<string>currentSession.commandLine</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
@@ -3961,14 +3946,6 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentSession.terminalIconName</string>
-				<key>nonterminalContext</key>
-				<integer>0</integer>
-			</dict>
-			<dict>
-				<key>isTerminal</key>
-				<true/>
-				<key>name</key>
 				<string>currentSession.presentationName</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
@@ -3978,14 +3955,6 @@
 				<true/>
 				<key>name</key>
 				<string>iterm2.localhostName</string>
-				<key>nonterminalContext</key>
-				<integer>0</integer>
-			</dict>
-			<dict>
-				<key>isTerminal</key>
-				<true/>
-				<key>name</key>
-				<string>currentSession.jobPid</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -4026,14 +3995,6 @@
 				<true/>
 				<key>name</key>
 				<string>currentSession.name</string>
-				<key>nonterminalContext</key>
-				<integer>0</integer>
-			</dict>
-			<dict>
-				<key>isTerminal</key>
-				<true/>
-				<key>name</key>
-				<string>currentSession.lastCommand</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -4105,7 +4066,7 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentSession.pid</string>
+				<string>currentSession.path</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -4113,7 +4074,7 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentSession.path</string>
+				<string>currentSession.pid</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -4127,19 +4088,19 @@
 			</dict>
 			<dict>
 				<key>isTerminal</key>
-				<true/>
-				<key>name</key>
-				<string>currentSession</string>
-				<key>nonterminalContext</key>
-				<integer>0</integer>
-			</dict>
-			<dict>
-				<key>isTerminal</key>
 				<false/>
 				<key>name</key>
 				<string>currentSession</string>
 				<key>nonterminalContext</key>
 				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>isTerminal</key>
+				<true/>
+				<key>name</key>
+				<string>currentSession</string>
+				<key>nonterminalContext</key>
+				<integer>0</integer>
 			</dict>
 		</array>
 		<key>4</key>
@@ -4171,13 +4132,7 @@
 		</array>
 	</dict>
 	<key>NoSyncTipOfTheDayEligibilityBeganTime</key>
-	<real>600299145.12193501</real>
-	<key>NoSyncTipsToNotShow</key>
-	<array>
-		<string>000</string>
-		<string>0000</string>
-		<string>0001</string>
-	</array>
+	<real>592269049.55426598</real>
 	<key>OnlyWhenMoreTabs</key>
 	<false/>
 	<key>OpenArrangementAtStartup</key>
@@ -4223,17 +4178,21 @@
 	<true/>
 	<key>QuitWhenAllWindowsClosed</key>
 	<true/>
+	<key>SUAutomaticallyUpdate</key>
+	<true/>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/final_new.xml?shard=67</string>
+	<string>https://iterm2.com/appcasts/final_new.xml?shard=89</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-01-16T21:10:26Z</date>
+	<date>2020-02-11T20:36:59Z</date>
 	<key>SUSendProfileInfo</key>
+	<false/>
+	<key>SUUpdateRelaunchingMarker</key>
 	<false/>
 	<key>ShowBookmarkName</key>
 	<false/>
@@ -4250,7 +4209,7 @@
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
 	<key>iTerm Version</key>
-	<string>3.3.7</string>
+	<string>3.3.8</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
