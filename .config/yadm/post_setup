@@ -35,8 +35,8 @@ setup_ruby() {
   # Use the Homebrew version
   rbenv global brew
 
-  # Install everything from the default_gems file
-  cat $(rbenv root)/default_gems | xargs -L 1 gem install -N
+  # Install everything from the default-gems file
+  cat $(rbenv root)/default-gems | xargs -L 1 gem install -N
 
   # Turn on rbenv-bundler
   rbenv bundler on
