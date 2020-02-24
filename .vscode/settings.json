@@ -10,5 +10,8 @@
     "python.jediEnabled": false,
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "workbench.colorTheme": "Dracula"
+    "workbench.colorTheme": "Dracula",
+    "[json]": {
+        "editor.defaultFormatter": "mblode.pretty-formatter"
+    }
 }

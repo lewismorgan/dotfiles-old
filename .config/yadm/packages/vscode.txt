@@ -20,6 +20,7 @@ kamikillerto.vscode-colorize
 Kasik96.swift
 mariomatheu.syntax-project-pbxproj
 mariusschulz.yarn-lock-syntax
+mblode.pretty-formatter
 mgmcdermott.vscode-language-babel
 ms-azuretools.vscode-docker
 ms-python.python

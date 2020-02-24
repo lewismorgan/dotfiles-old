@@ -10,7 +10,7 @@ gem update -N --system
 # Update outdated gems
 gem update -N
 # Install default gems
-cat $(rbenv root)/default_gems | xargs -L 1 gem install -N
+cat $(rbenv root)/default-gems | xargs -L 1 gem install -N
 
 # Update global yarn installed binaries
 yarn global upgrade

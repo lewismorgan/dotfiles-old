@@ -8,9 +8,6 @@ echo "🕥 $DATE | Performing weekly tasks 🍺."
 update
 clean
 
-rm ~/Brewfile
-brew bundle dump
-
 echo 'Finished running weekly maint. tasks' | terminal-notifier -title 'Weekly Script'
 
 echo "*** Finished. ***"
