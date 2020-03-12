@@ -29,16 +29,16 @@ if which jenv > /dev/null; then
   alias jenv_set_java_home='export JAVA_HOME="$HOME/.jenv/versions/`jenv version-name`"'
 fi
 
-### Added by Zplugin's installer
+### Added by zinit's installer
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
-source $HOME/.zplugin/bin/zplugin.zsh
-autoload -Uz _zplugin
-(( ${+_comps} )) && _comps[zplugin]=_zplugin
-### End of Zplugin installer's chunk
+source $HOME/.zinit/bin/zinit.zsh
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+### End of zinit installer's chunk
 
-# Theme function called by zplugin loader when loading p10k
+# Theme function called by zinit loader when loading p10k
 _imperial_p10k_theme() {
   POWERLEVEL9K_PROMPT_CHAR_OK_VIINS_CONTENT_EXPANSION=$'\uf101'
   POWERLEVEL9K_PROMPT_CHAR_ERROR_VIINS_CONTENT_EXPANSION=$'\uf101'
@@ -48,33 +48,56 @@ _imperial_p10k_theme() {
   POWERLEVEL9K_DIR_HOME_FOREGROUND="blue"
 }
 
-# ZPlugin Plugins --- Keep all of these last!
-zplugin ice lucid wait'!' atload'source ~/.p10k.zsh; _imperial_p10k_theme; _p9k_precmd' nocd; zplugin light romkatv/powerlevel10k
-zplugin ice pick'init.zsh' compile'*.zsh'; zplugin light laggardkernel/zsh-iterm2
+# zinit Plugins --- Keep all of these last!
+zinit ice lucid wait'!' atload'source ~/.p10k.zsh; _imperial_p10k_theme; _p9k_precmd' nocd; zinit light romkatv/powerlevel10k
+zinit ice pick'init.zsh' compile'*.zsh'; zinit light laggardkernel/zsh-iterm2
 
 # OMZ Plugins
-zplugin ice wait lucid; zplugin snippet OMZ::plugins/dotenv/dotenv.plugin.zsh
-zplugin ice wait lucid; zplugin snippet OMZ::plugins/git-extras/git-extras.plugin.zsh
-zplugin ice wait lucid; zplugin snippet OMZ::plugins/git-hubflow/git-hubflow.plugin.zsh
-zplugin ice wait lucid; zplugin snippet OMZ::plugins/xcode/xcode.plugin.zsh
+zinit ice wait lucid; zinit snippet OMZ::plugins/dotenv/dotenv.plugin.zsh
+export ZSH_DOTENV_PROMPT=false
+zinit ice wait lucid; zinit snippet OMZ::plugins/git-extras/git-extras.plugin.zsh
+zinit ice wait lucid; zinit snippet OMZ::plugins/git-hubflow/git-hubflow.plugin.zsh
+zinit ice wait lucid; zinit snippet OMZ::plugins/xcode/xcode.plugin.zsh
 ###
 
 # LS_COLORS
-
-zplugin ice atclone"gdircolors -b LS_COLORS > clrs.zsh" \
+zinit ice atclone"gdircolors -b LS_COLORS > clrs.zsh" \
     atpull'%atclone' pick"clrs.zsh" nocompile'!' \
     atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'
-zplugin light trapd00r/LS_COLORS
+zinit light trapd00r/LS_COLORS
 
 # direnv
-zplugin ice as"program" make'!' atclone'./direnv hook zsh > zhook.zsh' \
+zinit ice as"program" make'!' atclone'./direnv hook zsh > zhook.zsh' \
     atpull'%atclone' pick"direnv" src"zhook.zsh"
-zplugin light direnv/direnv
+zinit light direnv/direnv
 
-# Keep these in this order
-zplugin ice wait blockf lucid; zplugin light zsh-users/zsh-completions; 
-zplugin ice wait atload"_zsh_autosuggest_start" lucid nocd; zplugin light zsh-users/zsh-autosuggestions
-zplugin ice wait atinit"zpcompinit; zpcdreplay" lucid nocd; zplugin light zdharma/fast-syntax-highlighting
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-ZSH_AUTOSUGGEST_USE_ASYNC=1
-ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+# z
+zinit ice wait blockf lucid
+zinit light rupa/z
+
+# z tab completion
+zinit ice wait lucid
+zinit light changyuheng/fz
+
+# z / fzf (ctrl-g)
+zinit ice wait lucid
+zinit light andrewferrier/fzf-z
+
+# cd
+zinit ice wait lucid
+zinit light changyuheng/zsh-interactive-cd
+
+# autosuggestions, trigger precmd hook upon load
+zinit ice wait lucid atload'_zsh_autosuggest_start'
+zinit light zsh-users/zsh-autosuggestions
+export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=10
+
+# Tab completions
+zinit ice wait lucid blockf atpull'zinit creinstall -q .'
+zinit light zsh-users/zsh-completions
+
+# Syntax highlighting
+zinit ice wait lucid atinit'zpcompinit; zpcdreplay'
+zinit light zdharma/fast-syntax-highlighting
+
+export ZSH_AUTOSUGGEST_USE_ASYNC=1
