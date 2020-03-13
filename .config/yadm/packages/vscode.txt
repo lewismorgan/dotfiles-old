@@ -30,10 +30,16 @@ Orta.vscode-ios-common-files
 Orta.vscode-react-native-storybooks
 PBeast.lanes-navigator
 rebornix.ruby
+redhat.java
 ritwickdey.live-sass
 ritwickdey.LiveServer
 rpinski.shebang-snippets
 VisualStudioExptTeam.vscodeintellicode
+vscjava.vscode-java-debug
+vscjava.vscode-java-dependency
+vscjava.vscode-java-pack
+vscjava.vscode-java-test
+vscjava.vscode-maven
 wayou.vscode-todo-highlight
 wingrunr21.vscode-ruby
 zhouronghui.propertylist
