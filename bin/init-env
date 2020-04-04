@@ -7,6 +7,8 @@ export PATH=$HOME/.fastlane/bin:$PATH
 ### MISC EXPORTS ###
 export NODE_BUILD_DEFINITIONS="$(brew --prefix node-build-update-defs)/share/node-build"
 export EDITOR="'/Applications/Visual Studio Code.app/Contents/MacOS/Electron' -w"
+# Flutter
+export PATH=$HOME/dev/flutter/bin:$PATH
 
 # Aliases #
 alias xcode="open -a Xcode"
