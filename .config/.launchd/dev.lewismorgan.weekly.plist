@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
   <key>Label</key>
-  <string>com.lewisjmorgan.weekly</string>
+  <string>dev.lewismorgan.weekly</string>
   <key>Program</key>
   <string>/Users/lewismorgan/.config/.launchd/weekly.sh</string>
 
@@ -22,7 +22,5 @@
 
   <key>StandardErrorPath</key>
   <string>/Users/lewismorgan/weekly.err</string>
-  <key>StandardOutPath</key>
-  <string>/Users/lewismorgan/weekly.out</string>
 </dict>
 </plist>

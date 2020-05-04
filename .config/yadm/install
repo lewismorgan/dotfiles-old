@@ -7,7 +7,7 @@
 mac_pre_bootstrap() {
   # Dev tools required for Homebrew
   xcode-select --install
-  
+
   # Homebrew
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   brew install yadm
@@ -18,5 +18,5 @@ mac_pre_bootstrap
 
 # Clone the dotfiles repository to setup everything else
 yadm clone https://github.com/lewismorgan/dotfiles.git --no-bootstrap
-brew bundle
+brew bundle --file=~/.config/yadm/Brewfile
 yadm bootstrap

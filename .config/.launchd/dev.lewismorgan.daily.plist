@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Label</key>
-	<string>com.lewisjmorgan.daily</string>
+	<string>dev.lewismorgan.daily</string>
 	<key>Program</key>
 	<string>/Users/lewismorgan/.config/.launchd/daily.sh</string>
 	<key>StartCalendarInterval</key>
@@ -17,7 +17,5 @@
 	<true/>
 	<key>StandardErrorPath</key>
 	<string>/Users/lewismorgan/daily.err</string>
-	<key>StandardOutPath</key>
-	<string>/Users/lewismorgan/daily.out</string>
 </dict>
 </plist>

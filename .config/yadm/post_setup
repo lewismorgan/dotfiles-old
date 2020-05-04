@@ -2,16 +2,8 @@
 
 # Stuff thats not system dependent, used after system setup
 
-VERSION_NODE=13.6.0
-VERSION_RUBY=2.7.0
-
-install_packages() {
-  echo "Installing global yarn packages 🧶"
-  cat $HOME/.config/yadm/packages/yarn.txt | xargs -L 1 yarn global add
-
-  echo "Installing vscode packages ⚙️"
-  cat $HOME/.config/yadm/packages/vscode.txt | xargs -L 1 code --install-extension
-}
+#VERSION_NODE=13.6.0
+#VERSION_RUBY=2.7.0
 
 setup_node() {
   nodenv install $VERSION_NODE
@@ -57,7 +49,7 @@ setup_zsh() {
   git clone https://github.com/zdharma/zinit.git ~/.zinit/bin
 }
 
-setup_ruby
+#setup_ruby
 install_packages
-setup_jenv
+#setup_jenv
 setup_zsh
