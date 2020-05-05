@@ -8,6 +8,4 @@ cleanup
 # Ruby
 gem cleanup
 
-# Delete daily logs
-rm -f ~/daily.log
 rm -f ~/daily.err

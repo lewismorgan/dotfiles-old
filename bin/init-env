@@ -12,7 +12,6 @@ export PATH=$HOME/dev/flutter/bin:$PATH
 
 # Aliases #
 alias xcode="open -a Xcode"
-alias xcodeb="open -a Xcode-beta"
 alias kraken="open -a 'GitKraken'"
 alias brew='env PATH=${PATH//$(pyenv root)\/shims:/} brew'
 alias ls='gls --color'

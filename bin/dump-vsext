@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-yadm_packages=~/.config/yadm/packages
-
-rm $yadm_packages/vscode.txt
-code --list-extensions | xargs -L 1 > $yadm_packages/vscode.txt
-echo "Dumped extensions to $yadm_packages/vscode.txt"

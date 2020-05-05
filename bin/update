@@ -18,7 +18,4 @@ yarn global upgrade
 # Update Mac cleanup
 #curl -fsSL "https://raw.githubusercontent.com/fwartner/mac-cleanup/master/installer.sh" | bash -s update
 
-# Update list of packages
-dump-vsext
-
 echo "Finished updating system"
