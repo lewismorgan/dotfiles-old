@@ -3,7 +3,7 @@
 # Stuff thats not system dependent, used after system setup
 
 #VERSION_NODE=13.6.0
-#VERSION_RUBY=2.7.0
+VERSION_RUBY=2.7.1
 
 setup_node() {
   nodenv install $VERSION_NODE
@@ -18,14 +18,11 @@ setup_node() {
 setup_ruby() {
   # Install plugins
   git clone https://github.com/rbenv/rbenv-default-gems.git $(rbenv root)/plugins/rbenv-default-gems
+  git clone https://github.com/rbenv/rbenv-vars.git $(rbenv root)/plugins/rbenv-vars
 
   rbenv install $VERSION_RUBY
 
-  # Link to Homebrew version
-  ln -s /usr/local/opt/ruby ~/.rbenv/versions/brew
-
-  # Use the Homebrew version
-  rbenv global brew
+  rbenv global system
 
   # Install everything from the default-gems file
   cat $(rbenv root)/default-gems | xargs -L 1 gem install -N
@@ -49,7 +46,7 @@ setup_zsh() {
   git clone https://github.com/zdharma/zinit.git ~/.zinit/bin
 }
 
-#setup_ruby
+setup_ruby
 install_packages
 #setup_jenv
 setup_zsh

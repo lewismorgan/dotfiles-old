@@ -13,20 +13,6 @@ writeDefaults() {
   defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
 }
 
-scheduledTasks() {
-  echo "Creating & Hooking launch agents up to launchctl 🚀"
-
-  if [ ! -d "$HOME/Library/LaunchAgents" ]; then
-    mkdir $HOME/Library/LaunchAgents
-  fi
-
-  ln -s $HOME/.config/.launchd/com.lewisjmorgan.daily.plist $HOME/Library/LaunchAgents
-  ln -s $HOME/.config/.launchd/com.lewisjmorgan.weekly.plist $HOME/Library/LaunchAgents
-
-  launchctl load $HOME/Library/LaunchAgents/com.lewisjmorgan.daily.plist
-  launchctl load $HOME/Library/LaunchAgents/com.lewisjmorgan.weekly.plist
-}
-
 code --install-extension Shan.code-settings-sync
 
 writeDefaults
