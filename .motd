@@ -1,8 +1,11 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 LOLCAT_PVAL=6.0
+RED=$'\e[1;31m'
+NC='\033[0m' # No Color
 
-scutil --get LocalHostName | /usr/local/bin/figlet -cf starwars -w $COLUMNS | /usr/local/bin/lolcat -p $LOLCAT_PVAL
-echo "  Last Login....: [ $(last -1 $USER -R | head -1 | cut -c 40-) ] " | fmt -l 1 | /usr/local/bin/lolcat -p $LOLCAT_PVAL
-echo "  Running for...: [ $(uptime | cut -c 11- | cut -c -14) ] " | fmt -l 1 | /usr/local/bin/lolcat -p $LOLCAT_PVAL
-echo "  System........: [ MacOS $(sw_vers -productVersion) ] " | fmt -l 1 | /usr/local/bin/lolcat -p $LOLCAT_PVAL
-/usr/local/bin/fortune -a -s | /usr/local/bin/cowsay -f vader | /usr/local/bin/lolcat -p $LOLCAT_PVAL
+scutil --get LocalHostName | /usr/local/bin/figlet -cf starwars -w $COLUMNS | /usr/local/bin/lolcat -p ${LOLCAT_PVAL}
+echo "   $(tput setaf 3)System$(tput setaf 6)........: $(tput setaf 0)[ $(tput setaf 4)MacOS $(sw_vers -productVersion) $(tput setaf 0)] \n"
+echo "   $(tput setaf 3)User$(tput setaf 6)..........: $(tput setaf 0)[ $(tput setaf 4)$(echo $USER) $(tput setaf 0)]"
+echo "   $(tput setaf 3)Last Login$(tput setaf 6)....: $(tput setaf 0)[ $(tput setaf 4)$(last -1 $USER -R | head -1 | cut -c 40-) $(tput setaf 0)]\n"
+echo "   $(tput setaf 3)Running for$(tput setaf 6)...: $(tput setaf 0)[ $(tput setaf 4)$(uptime | cut -c 11- | cut -c -14) $(tput setaf 0)] "
+/usr/local/bin/fortune -a -s | /usr/local/bin/cowsay -f vader | /usr/local/bin/lolcat -p ${LOLCAT_PVAL}
