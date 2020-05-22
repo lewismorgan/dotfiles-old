@@ -1,3 +1,8 @@
-scutil --get LocalHostName | /usr/local/bin/figlet -cf starwars -w $COLUMNS | /usr/local/bin/lolcat -p 6.0
-echo "/*********** MacOS $(sw_vers -productVersion) ***********\\" | fmt -c -w $COLUMNS | /usr/local/bin/lolcat -p 6.0
-/usr/local/bin/fortune -a -s | /usr/local/bin/cowsay -f vader | /usr/local/bin/lolcat -p 6.0
+#!/usr/bin/env sh
+LOLCAT_PVAL=6.0
+
+scutil --get LocalHostName | /usr/local/bin/figlet -cf starwars -w $COLUMNS | /usr/local/bin/lolcat -p $LOLCAT_PVAL
+echo "  Last Login....: [ $(last -1 $USER -R | head -1 | cut -c 40-) ] " | fmt -l 1 | /usr/local/bin/lolcat -p $LOLCAT_PVAL
+echo "  Running for...: [ $(uptime | cut -c 11- | cut -c -14) ] " | fmt -l 1 | /usr/local/bin/lolcat -p $LOLCAT_PVAL
+echo "  System........: [ MacOS $(sw_vers -productVersion) ] " | fmt -l 1 | /usr/local/bin/lolcat -p $LOLCAT_PVAL
+/usr/local/bin/fortune -a -s | /usr/local/bin/cowsay -f vader | /usr/local/bin/lolcat -p $LOLCAT_PVAL
