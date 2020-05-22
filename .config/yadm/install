@@ -1,22 +1,26 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 # Wrapper script to install everything through YADM
 # Installs custom binaries onto the system and then bootstraps packages through YADM.
 # Created by Lewis Morgan
 
-mac_pre_bootstrap() {
+DOTFILES_REPO=https://github.com/lewismorgan/dotfiles.git
+
+mac_install() {
   # Dev tools required for Homebrew
-  xcode-select --install
+  sudo xcode-select --install
+  sudo xcodebuild -license accept
 
   # Homebrew
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
   brew install yadm
-  # Setup of packages is done during bootstrap
+
+  # Clone the dotfiles but don't bootstrap it until Homebrew bundle is installed
+  yadm clone $DOTFILES_REPO --no-bootstrap
+  brew bundle --file=~/.config/yadm/Brewfile
+  yadm bootstrap
 }
 
-mac_pre_bootstrap
-
-# Clone the dotfiles repository to setup everything else
-yadm clone https://github.com/lewismorgan/dotfiles.git --no-bootstrap
-brew bundle --file=~/.config/yadm/Brewfile
-yadm bootstrap
+if [ "$system_type" = "Darwin" ]; then
+  mac_install
+fi

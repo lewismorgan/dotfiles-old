@@ -1,18 +1,15 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 # Stuff thats not system dependent, used after system setup
 
-#VERSION_NODE=13.6.0
+VERSION_NODE=14.3.0
 VERSION_RUBY=2.7.1
 
 setup_node() {
   nodenv install $VERSION_NODE
 
-  # Link to Homebrew version
-  ln -s /usr/local/opt/node ~/.nodenv/versions/brew
-
-  # Use the homebrew version
-  nodenv global brew
+  # Use the homebrew version (system)
+  nodenv global system
 }
 
 setup_ruby() {
@@ -22,6 +19,7 @@ setup_ruby() {
 
   rbenv install $VERSION_RUBY
 
+  # Use the homebrew version (system)
   rbenv global system
 
   # Install everything from the default-gems file
@@ -40,6 +38,10 @@ setup_jenv() {
   jenv global system
 }
 
+setup_apps() {
+  code --install-extension Shan.code-settings-sync
+}
+
 # ZSH Setup
 setup_zsh() {
   mkdir ~/.zinit
@@ -47,6 +49,8 @@ setup_zsh() {
 }
 
 setup_ruby
-install_packages
+#install_packages
 #setup_jenv
+setup_apps
+# Setting up ZSH is the last step since it will restart the console
 setup_zsh

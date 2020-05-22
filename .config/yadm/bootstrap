@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-# Bootstrap setup script depending on system
+# Bootstrap script run by YADM bootstrapper
+
+# TODO: Bootstrap for WSL 2
+
+# Bootstrap with a setup script depending on system
 yadm_path="$HOME/.config/yadm"
 
 system_type=$(uname -s)
