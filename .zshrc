@@ -22,6 +22,9 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
+# Anaconda
+export PATH="/usr/local/anaconda3/bin:$PATH"
+
 # JEnv
 if which jenv > /dev/null; then
   eval "$(jenv init -)"
