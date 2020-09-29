@@ -2,7 +2,7 @@
 
 # Bootstrap script run by YADM bootstrapper
 
-# TODO: Bootstrap for WSL 2
+# TODO: Bootstrap for WSL
 
 # Bootstrap with a setup script depending on system
 yadm_path="$HOME/.config/yadm"

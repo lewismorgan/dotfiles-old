@@ -2,7 +2,7 @@
 
 # Stuff thats not system dependent, used after system setup
 
-VERSION_NODE=14.3.0
+VERSION_NODE=14.12.0
 VERSION_RUBY=2.7.1
 
 setup_node() {
@@ -39,7 +39,6 @@ setup_jenv() {
 }
 
 setup_apps() {
-  code --install-extension Shan.code-settings-sync
 }
 
 # ZSH Setup
