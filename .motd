@@ -8,4 +8,4 @@ echo "   $(tput setaf 3)System$(tput setaf 6)........: $(tput setaf 0)[ $(tput s
 echo "   $(tput setaf 3)User$(tput setaf 6)..........: $(tput setaf 0)[ $(tput setaf 4)$(echo $USER) $(tput setaf 0)]"
 echo "   $(tput setaf 3)Last Login$(tput setaf 6)....: $(tput setaf 0)[ $(tput setaf 4)$(last -1 $USER -R | head -1 | cut -c 40-) $(tput setaf 0)]\n"
 echo "   $(tput setaf 3)Running for$(tput setaf 6)...: $(tput setaf 0)[ $(tput setaf 4)$(uptime | cut -c 11- | cut -f1 -d",") $(tput setaf 0)] "
-/usr/local/bin/fortune -a -s | /usr/local/bin/cowsay -f vader | /usr/local/bin/lolcat -p ${LOLCAT_PVAL}
+/usr/local/bin/fortune -s startrek | /usr/local/bin/cowsay -f vader | /usr/local/bin/lolcat -p ${LOLCAT_PVAL}
