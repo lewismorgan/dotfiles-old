@@ -1,6 +1,8 @@
 
 ### PATH EXPORTS ###
 export PATH=$HOME/bin:$PATH
+# Anaconda
+export PATH="/usr/local/anaconda3/bin:$PATH"
 
 # Environment
 source $HOME/bin/init-env
@@ -21,9 +23,6 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 # Python init from peynv and/or virtualenv
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
-
-# Anaconda
-export PATH="/usr/local/anaconda3/bin:$PATH"
 
 # JEnv
 if which jenv > /dev/null; then
