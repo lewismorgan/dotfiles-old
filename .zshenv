@@ -1,1 +1,1 @@
-source $HOME/.motd
+.config/zsh/.zshenv
