@@ -16,11 +16,16 @@ mac_install() {
   brew install yadm
 
   # Clone the dotfiles but don't bootstrap it until Homebrew bundle is installed
-  yadm clone $DOTFILES_REPO --no-bootstrap
+  yadm clone --no-bootstrap $DOTFILES_REPO
   brew bundle --file=~/.config/yadm/Brewfile
   yadm bootstrap
 }
 
-if [ "$system_type" = "Darwin" ]; then
-  mac_install
-fi
+linux_install() {
+  yadm clone --bootstrap $DOTFILES_REPO 
+}
+
+case "${OSTYPE:?}" in
+  linux*)   sudo apt install -y yadm ;;
+  darwin*)  mac_install ;;
+esac

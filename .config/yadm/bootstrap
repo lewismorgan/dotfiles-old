@@ -1,18 +1,24 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-# Bootstrap script run by YADM bootstrapper
+# Save this file as ~/.config/yadm/bootstrap and make it executable. It will
+# execute all executable files (excluding templates and editor backups) in the
+# ~/.config/yadm/bootstrap.d directory when run.
 
-# TODO: Bootstrap for WSL
+set -eu
 
-# Bootstrap with a setup script depending on system
-yadm_path="$HOME/.config/yadm"
+# Directory to look for bootstrap executables in
+BOOTSTRAP_D="${BASH_SOURCE[0]}.d"
 
-system_type=$(uname -s)
-
-if [ "$system_type" = "Darwin" ]; then
-  $yadm_path/mac/setup
+if [[ ! -d "$BOOTSTRAP_D" ]]; then
+    echo "Error: bootstrap directory '$BOOTSTRAP_D' not found" >&2
+    exit 1
 fi
 
-$yadm_path/post_setup
-
-echo "Finished bootstrapping the system! 👍"
+find -L "$BOOTSTRAP_D" -type f | sort | while IFS= read -r bootstrap; do
+    if [[ -x "$bootstrap" && ! "$bootstrap" =~ "##" && ! "$bootstrap" =~ "~$" ]]; then
+        if ! "$bootstrap"; then
+            echo "Error: bootstrap '$bootstrap' failed" >&2
+            exit 1
+        fi
+    fi
+done
