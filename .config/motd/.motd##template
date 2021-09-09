@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+{% if yadm.os == "Darwin" %}
+LOLCAT_PVAL=6.0
+{% endif %}
+RED=$'\e[1;31m'
+NC='\033[0m' # No Color
+
+{% if yadm.os == "Darwin" %}
+scutil --get LocalHostName | /usr/local/bin/figlet -cf starwars -w $COLUMNS | /usr/local/bin/lolcat -p ${LOLCAT_PVAL}
+{% endif %}
+echo "   $(tput setaf 3)System$(tput setaf 6)........: $(tput setaf 0)[ $(tput setaf 4)MacOS $(sw_vers -productVersion) $(tput setaf 0)] \n"
+echo "   $(tput setaf 3)User$(tput setaf 6)..........: $(tput setaf 0)[ $(tput setaf 4)$(echo $USER) $(tput setaf 0)]"
+echo "   $(tput setaf 3)Last Login$(tput setaf 6)....: $(tput setaf 0)[ $(tput setaf 4)$(last -1 $USER -R | head -1 | cut -c 40-) $(tput setaf 0)]\n"
+echo "   $(tput setaf 3)Running for$(tput setaf 6)...: $(tput setaf 0)[ $(tput setaf 4)$(uptime | cut -c 11- | cut -f1 -d",") $(tput setaf 0)] "
+{% if yadm.os == "Darwin" %}
+/usr/local/bin/fortune -s startrek | /usr/local/bin/cowsay -f vader | /usr/local/bin/lolcat -p ${LOLCAT_PVAL}
+{% endif %}
