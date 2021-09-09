@@ -22,8 +22,8 @@ mac_install() {
 }
 
 linux_install() {
-  curl -fLo ~/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm && chmod a+x ~/bin/yadm
-  yadm clone --bootstrap $DOTFILES_REPO 
+  sudo curl -fLo /usr/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm && sudo chmod a+x /usr/bin/yadm
+  sudo yadm clone --bootstrap $DOTFILES_REPO 
 }
 
 case "${OSTYPE:?}" in
