@@ -38,12 +38,10 @@ setup_jenv() {
   jenv global system
 }
 
-setup_apps() {
-}
-
-setup_ruby
+#setup_ruby
 #install_packages
 #setup_jenv
-setup_apps
+#setup_apps
 # Setting up ZSH is the last step since it will restart the console
-setup_zsh
+#setup_zsh
+echo "Setup!"

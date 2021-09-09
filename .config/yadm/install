@@ -22,7 +22,7 @@ mac_install() {
 }
 
 linux_install() {
-  sudo apt install -y yadm
+  curl -fLo ~/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm && chmod a+x ~/bin/yadm
   yadm clone --bootstrap $DOTFILES_REPO 
 }
 
