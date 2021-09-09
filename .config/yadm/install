@@ -22,10 +22,11 @@ mac_install() {
 }
 
 linux_install() {
+  sudo apt install -y yadm
   yadm clone --bootstrap $DOTFILES_REPO 
 }
 
 case "${OSTYPE:?}" in
-  linux*)   sudo apt install -y yadm ;;
+  linux*)   linux_install ;;
   darwin*)  mac_install ;;
 esac

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Setup ZSH
+
+mkdir ~/.zinit
+git clone https://github.com/zdharma/zinit.git ~/.zinit/bin
