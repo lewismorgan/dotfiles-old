@@ -3,8 +3,10 @@
 export PATH=$HOME/bin:$PATH
 
 # Environment
+{% if yadm.os == "Darwin" %}
 source $HOME/bin/init-env
 export ITERM2_SQUELCH_MARK=1
+{% endif %}
 
 ### GPG Keys ###
 # Git commits for gpg won't work unless this is used
@@ -29,10 +31,16 @@ if which jenv > /dev/null; then
   alias jenv_set_java_home='export JAVA_HOME="$HOME/.jenv/versions/`jenv version-name`"'
 fi
 
+### Aliases ###
+alias ls='gls --color'
+
 ### Added by zinit's installer
+{% if yadm.os == "Darwin" %}
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
+{% endif %}
+
 source $HOME/.zinit/bin/zinit.zsh
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
